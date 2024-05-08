@@ -65,7 +65,10 @@ $data;
                                                     <button type="button" class="btn btn-success">Detail</button>
                                                 </a>
                                                 <a class="btn_delete" href="php/query/deleteanggota_lama.php?no_member=<?= $data['no_member'] ?>">
-                                                    <button type="button" class="btn btn-warning">Hapus</button>
+                                                    <button type="button" class="btn btn-danger">Hapus</button>
+                                                </a>
+                                                <a class="btn_delete" href="#">
+                                                    <button type="button" class="btn btn-warning">Cetak</button>
                                                 </a>
                                             </td>
                                         </tr>

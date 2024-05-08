@@ -197,12 +197,11 @@ if (isset($id_register)) {
                                 </div>
 
                                 <div class="tab-pane" id="peminjaman">
-
                                     <?php
                                     $id_member = $data['no_member'];
                                     $datapinjam;
 
-                                    $querypinjam = "SELECT tb_pinjam.*, tb_buku.nama_buku FROM tb_pinjam JOIN tb_buku ON tb_pinjam.id_buku = tb_buku.kd_buku WHERE tb_pinjam.no_member = '$id_member' AND tb_pinjam.status = 'belum kembali';";
+                                    $querypinjam = "SELECT tb_pinjam.*, tb_buku.nama_buku FROM tb_pinjam JOIN tb_buku ON tb_pinjam.id_buku = tb_buku.kd_buku WHERE tb_pinjam.no_member = '$id_register' AND tb_pinjam.status = 'belum kembali';";
                                     $resultpinjam = mysqli_query($connect, $querypinjam);
                                     // if ($resultpinjam) {
                                     //     $datapinjam = mysqli_fetch_array($resultpinjam);
@@ -230,7 +229,7 @@ if (isset($id_register)) {
                                                             <td><?= $datapinjam['nama_buku'] ?></td>
                                                             <td><?= $datapinjam['tgl_pinjam'] ?></td>
                                                             <td><?= $datapinjam['tgl_kembali'] ?></td>
-                                                            <td><?= $datapinjam['status'] ?></td>
+                                                            <td> <span class="badge bg-danger"><?= $datapinjam['status'] ?></span></td>
                                                             <!-- <td class="text-center">
                                                                 <a href="?hal=detail_buku&kd_buku=<?= $data['kd_buku'] ?>">
                                                                     <button type="button" class="btn btn-success">Detail</button>
@@ -253,7 +252,7 @@ if (isset($id_register)) {
                                     $id_member = $data['no_member'];
                                     $datariwayatpinjam;
 
-                                    $queryriwayatpinjam = "SELECT tb_pinjam.*, tb_buku.nama_buku FROM tb_pinjam JOIN tb_buku ON tb_pinjam.id_buku = tb_buku.kd_buku WHERE tb_pinjam.no_member = '$id_member' AND tb_pinjam.status = 'kembali';";
+                                    $queryriwayatpinjam = "SELECT tb_pinjam.*, tb_buku.nama_buku FROM tb_pinjam JOIN tb_buku ON tb_pinjam.id_buku = tb_buku.kd_buku WHERE tb_pinjam.no_member = '$id_register' AND tb_pinjam.status = 'kembali';";
                                     $resultriwayatpinjam = mysqli_query($connect, $queryriwayatpinjam);
                                     // if ($resultpinjam) {
                                     //     $datapinjam = mysqli_fetch_array($resultpinjam);
@@ -262,7 +261,7 @@ if (isset($id_register)) {
 
                                     <div class="card">
                                         <div class="card-body">
-                                            <table id="example1" class="table table-bordered table-striped">
+                                            <table id="example2" class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr>
                                                         <th style="width: 10px">No</th>
@@ -281,7 +280,7 @@ if (isset($id_register)) {
                                                             <td><?= $datariwayatpinjam['nama_buku'] ?></td>
                                                             <td><?= $datariwayatpinjam['tgl_pinjam'] ?></td>
                                                             <td><?= $datariwayatpinjam['tgl_kembali'] ?></td>
-                                                            <td><?= $datariwayatpinjam['status'] ?></td>
+                                                            <td><span class="badge bg-success"><?= $datariwayatpinjam['status'] ?></span></td>
                                                             <!-- <td class="text-center">
                                                                 <a href="?hal=detail_buku&kd_buku=<?= $data['kd_buku'] ?>">
                                                                     <button type="button" class="btn btn-success">Detail</button>
