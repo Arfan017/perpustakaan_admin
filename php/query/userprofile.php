@@ -22,6 +22,7 @@ if (isset($id_register)) {
         $DataUser["email"] = $row["email"];
         $DataUser["alamat"] = $row["alamat1"];
         $DataUser["ttgl_lahir"] = $row["ttgl_lahir"];
+        $DataUser["gambar"] = $row["gambar"];
     }
     echo json_encode($DataUser);
     exit;

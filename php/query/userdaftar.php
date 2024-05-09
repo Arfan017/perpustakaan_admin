@@ -18,8 +18,14 @@ $notelp = $_POST["notelp"];
 $pekerjaan = $_POST["pekerjaan"];
 $namatinstitusi = $_POST["namatinstitusi"];
 $alamatinstitusi = $_POST["alamatinstitusi"];
+$image = $_POST["gambar"];
 
-if (empty($id) || empty($noidentitas) || empty($nama) || empty($jeniskelamin) || empty($ttgllahir) || empty($alamat1) || empty($alamat2) || empty($notelp) || empty($namatinstitusi) || empty($alamatinstitusi)) {
+$path_image = "/xampp/htdocs/perpustakaan/images/images_profile/";
+$imageStore = rand()."-".time().".jpeg";
+$target_path = $path_image."/".$imageStore;
+file_put_contents($target_path, base64_decode($image));
+
+if (empty($id) || empty($noidentitas) || empty($nama) || empty($jeniskelamin) || empty($ttgllahir) || empty($alamat1) || empty($alamat2) || empty($notelp) || empty($namatinstitusi) || empty($alamatinstitusi) || empty($image)) {
     $response["message"] = "Tidak ada data yang dikirim";
     $response["success"] = false;
 } else {
@@ -32,7 +38,7 @@ if (empty($id) || empty($noidentitas) || empty($nama) || empty($jeniskelamin) ||
             $row = mysqli_fetch_assoc($result);
             $nomember = generateNoMember($row['total_member']);
             $query = "INSERT INTO user_member 
-(id_register, no_member, no_identitas, nama, jenkel, ttgl_lahir, alamat1, alamat2, no_hp, pekerjaan, nama_institusi ,alamat_institusi) VALUES ('$id', $nomember, '$noidentitas', '$nama', '$jeniskelamin', '$ttgllahir', '$alamat1', '$alamat2', '$notelp', '$pekerjaan', '$namatinstitusi', '$alamatinstitusi')";
+(id_register, no_member, no_identitas, nama, jenkel, ttgl_lahir, alamat1, alamat2, no_hp, pekerjaan, nama_institusi ,alamat_institusi, gambar) VALUES ('$id', $nomember, '$noidentitas', '$nama', '$jeniskelamin', '$ttgllahir', '$alamat1', '$alamat2', '$notelp', '$pekerjaan', '$namatinstitusi', '$alamatinstitusi', '$imageStore')";
             $result = mysqli_query($connect, $query);
             if ($result) {
                 // $query = "UPDATE user_register SET status = '1' WHERE id = $id";
