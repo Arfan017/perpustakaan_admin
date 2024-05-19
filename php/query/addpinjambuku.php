@@ -13,8 +13,13 @@ if (empty($id_buku) || empty($id_member) || empty($tgl_ambil) || empty($tgl_kemb
     $result = mysqli_query($connect, $query);
 
     if ($result) {
-        $response['success'] = true;
-        $response['message'] = "Pinjam buku berhasil";
+        // Kurangi stok buku
+        $update_query = "UPDATE tb_buku SET stok = stok - 1 WHERE kd_buku = '$id_buku'";
+        $update_result = mysqli_query($connect, $update_query);
+        if ($update_result) {
+            $response['success'] = true;
+            $response['message'] = "Pinjam buku berhasil";
+        }
+        echo json_encode($response);
     }
-    echo json_encode($response);
 }

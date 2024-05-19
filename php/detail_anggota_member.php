@@ -222,10 +222,12 @@ if (isset($id_register)) {
                                                 </thead>
                                                 <tbody>
                                                     <?php
+                                                    $i = 0;
                                                     while ($datapinjam = mysqli_fetch_array($resultpinjam)) {
+                                                        $i++;
                                                     ?>
                                                         <tr>
-                                                            <td><?= $datapinjam['no_member'] ?></td>
+                                                            <td><?= $i ?></td>
                                                             <td><?= $datapinjam['nama_buku'] ?></td>
                                                             <td><?= $datapinjam['tgl_pinjam'] ?></td>
                                                             <td><?= $datapinjam['tgl_kembali'] ?></td>
@@ -245,7 +247,7 @@ if (isset($id_register)) {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <!-- /.tab-pane -->
                                 <div class="tab-pane" id="riwayatpeminjaman">
                                     <?php
@@ -273,10 +275,12 @@ if (isset($id_register)) {
                                                 </thead>
                                                 <tbody>
                                                     <?php
+                                                    $i = 0;
                                                     while ($datariwayatpinjam = mysqli_fetch_array($resultriwayatpinjam)) {
+                                                        $i++;
                                                     ?>
                                                         <tr>
-                                                            <td><?= $datariwayatpinjam['no_member'] ?></td>
+                                                            <td><?= $i ?></td>
                                                             <td><?= $datariwayatpinjam['nama_buku'] ?></td>
                                                             <td><?= $datariwayatpinjam['tgl_pinjam'] ?></td>
                                                             <td><?= $datariwayatpinjam['tgl_kembali'] ?></td>

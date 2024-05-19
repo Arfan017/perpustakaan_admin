@@ -1,3 +1,19 @@
+<?php
+include('/xampp/htdocs/perpustakaan/php/query/config.php');
+
+$queryDataBuku = "SELECT COUNT(*) AS databuku FROM tb_buku;";
+$resultQueryDataBuku = mysqli_query($connect, $queryDataBuku);
+$rowDataBuku = mysqli_fetch_array($resultQueryDataBuku);
+
+$queryDataPeminjaman = "SELECT COUNT(*) AS datapeminjam FROM tb_pinjam WHERE tb_pinjam.status = 'belum kembali';";
+$resultDataPeminjaman = mysqli_query($connect, $queryDataPeminjaman);
+$rowDataPeminjaman = mysqli_fetch_array($resultDataPeminjaman);
+
+$queryDataMemberBaru = "SELECT COUNT(*) AS datamemberbaru FROM user_register JOIN user_member ON user_register.id = user_member.id_register WHERE user_register.status = '0';";
+$resultDataMemberBaru = mysqli_query($connect, $queryDataMemberBaru);
+$rowDataMemberBaru = mysqli_fetch_array($resultDataMemberBaru);
+
+?>
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
@@ -23,7 +39,7 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3><?= $rowDataPeminjaman['datapeminjam'] ?></h3>
 
                             <p>Peminjaman Buku</p>
                         </div>
@@ -38,14 +54,14 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
+                            <h3><?= $rowDataBuku['databuku'] ?></h3>
 
-                            <p>Doleksi Buku</p>
+                            <p>Koleksi Buku</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-book"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="?hal=data_buku" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -53,32 +69,18 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3><?= $rowDataMemberBaru['datamemberbaru'] ?></h3>
+
 
                             <p>Member baru</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="?hal=data_anggota_baru" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>65</h3>
 
-                            <p>Unique Visitors</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-pie-graph"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
             </div>
             <!-- /.row -->
             <!-- Main row -->

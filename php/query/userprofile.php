@@ -11,7 +11,7 @@ if (isset($id_register)) {
 
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
-
+        
         $nomember = str_pad($row["no_member"], 5, '0', STR_PAD_LEFT);
         $DataUser["success"] = true;
         $DataUser["no_member"] = $nomember;
@@ -23,6 +23,9 @@ if (isset($id_register)) {
         $DataUser["alamat"] = $row["alamat1"];
         $DataUser["ttgl_lahir"] = $row["ttgl_lahir"];
         $DataUser["gambar"] = $row["gambar"];
+    }
+    else {
+        $DataUser["success"] = false;
     }
     echo json_encode($DataUser);
     exit;
