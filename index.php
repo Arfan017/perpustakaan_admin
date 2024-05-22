@@ -148,6 +148,15 @@
                 </p>
               </a>
             </li>
+            <li class="nav-header">LAINNYA</li>
+            <li class="nav-item">
+              <a href="?hal=data_peminjaman" class="nav-link">
+                <i class="nav-icon ion ion-person"></i>
+                <p>
+                  Peminjaman
+                </p>
+              </a>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
