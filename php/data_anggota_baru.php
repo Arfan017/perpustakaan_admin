@@ -2,7 +2,10 @@
 
 
 include("/xampp/htdocs/perpustakaan/php/query/config.php");
-$query = "SELECT user_member.*, user_register.status FROM user_register JOIN user_member ON user_register.id = user_member.id_register WHERE user_register.status = '0';";
+$query = "SELECT user_member.*, user_register.status FROM user_register 
+            JOIN user_member ON user_register.id = user_member.id_register
+            WHERE user_register.status = '0';";
+
 $result = mysqli_query($connect, $query);
 $data;
 ?>
@@ -29,12 +32,12 @@ $data;
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <!-- <h3 class="card-title">DataTable with default features</h3> -->
+                        <!-- <div class="card-header">
+                            <h3 class="card-title">DataTable with default features</h3>
                             <a href="?hal=tambah_buku">
                                 <button type="button" class="btn btn-primary"><i class="fa fa-plus mr-2"></i>Tambah Buku</button>
                             </a>
-                        </div>
+                        </div> -->
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
