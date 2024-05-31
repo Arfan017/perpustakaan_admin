@@ -3,159 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-
-  <style>
-
-    @font-face {
-      font-family: 'MyFont';
-      src: url('/dist/font/archivo-black/ArchivoBlack-Regular.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    h1, h2, p {
-      font-family: 'MyFont', sans-serif; /* Use the local font first, then a fallback font */
-    }
-
-    h2, p{
-      margin: 0px;
-      padding: 0px;
-    }
-
-    .bg-sertif{
-      background-color: #FFF;
-      width: 1004px;
-      height: 580px;
-      background-image: url('/images/logo.png');
-      background-size: cover;
-      background-position: center;
-      margin: auto;
-    }
-
-    .overlay {
-      position: static;
-      width: 1004px;
-      height: 580px;
-      top: 0;
-      left: 0;
-      background-color: rgba(187, 213, 254, 0.4);
-    }   
-
-    .body-sertif{
-      box-sizing: border-box;
-      padding: 20px;
-    }
-
-    h1{
-      display: inline-block;
-    }
-
-    .head{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .txt-pekerjaan{
-      margin: 0px;
-      background-color: #392117;
-      padding: 10px;
-      color: #FFF;
-    }
-
-    .kartu-anggota{
-      color: #2B5430;
-      word-wrap: break-word;
-      text-align: end;
-    }
-
-    .main{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 80px;
-    }
-
-    .bingkai-foto-1{
-      width: 202px;
-      height: 256px;
-      outline-style: solid;
-      outline-color: #4284CC;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .bingkai-foto-2{
-      box-sizing: border-box;
-      width: 190px;
-      height: 240px;
-      outline-style: solid;
-      outline-color: #4284CC;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .biodata{
-      width: 400px;
-      height: fit-content;
-    }
-
-    .date{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-
-    .no-member-2{
-      background-color: #4284CC;
-      padding: 10px;
-      color: #FFF;
-      font-size: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .sience-2{
-      background-color: #4284CC;
-      padding: 10px;
-      color: #FFF;
-      font-size: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .nama
-    {
-      font-weight: bolder;
-      font-size: larger;
-      font-size: 30px;
-    }
-
-    .alamat
-    {
-      font-size: larger;
-      font-weight: bolder;
-    }
-
-  </style>
+  <!-- <title>Document</title> -->
+  <link rel="stylesheet" href="kartu_member.css">
 </head>
-<body>
 
+<body>
   <div class="bg-sertif">
     <div class="overlay">
       <div class="body-sertif">
         <div class="head">
-          <h1 class="txt-pekerjaan">PEKERJAAN</h1>
-          <h1 class="kartu-anggota">PERPUSTAKAAN DAERAH <br> KOTA SORONG</h1>
+          <table>
+            <tbody>
+              <tr>
+                <h1 class="txt-pekerjaan">PEKERJAAN</h1>
+              </tr>
+              <tr>
+                <h1 class="kartu-anggota">PERPUSTAKAAN DAERAH <br> KOTA SORONG</h1>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        
+
         <h2 style="text-align: end;">KARTU TANDA ANGGOTA</h2>
 
         <div class="main">
@@ -195,6 +63,3 @@
   
 </body>
 </html>
-
-<!-- height: 186 -->
-<!-- width: 236 -->
