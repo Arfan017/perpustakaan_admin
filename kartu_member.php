@@ -1,18 +1,24 @@
 <?php
+require_once  '/vendor/autoload.php';
 
-require_once __DIR__ . '/vendor/autoload.php';
+// reference the Dompdf namespace
+use Dompdf\Dompdf;
 
-$mpdf = new
-\Mpdf\Mpdf([
-  'orientation' => 'L'
-]);
-
-$stylesheet = file_get_contents('kartu_member.css');
 $html = file_get_contents('kartu_member.html');
 
-$mpdf->WriteHTML($stylesheet, 1);
-$mpdf->WriteHTML($html, 2);
+// instantiate and use the dompdf class
+$dompdf = new Dompdf();
 
-$mpdf->Output('kartu_member.pdf', 'D');
+// (Optional) Setup the paper size and orientation
+$dompdf->setPaper('A4', 'landscape');
+
+// Load HTML content
+$dompdf->loadHtml($html);
+
+// Render the HTML as PDF
+$dompdf->render();
+
+// Output the generated PDF to Browser
+$dompdf->stream();
 
 ?>
