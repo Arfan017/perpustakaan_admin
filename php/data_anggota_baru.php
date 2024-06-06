@@ -1,7 +1,6 @@
 <?php
+include("query/config.php");
 
-
-include("/xampp/htdocs/perpustakaan/php/query/config.php");
 $query = "SELECT user_member.*, user_register.status FROM user_register 
             JOIN user_member ON user_register.id = user_member.id_register
             WHERE user_register.status = '0';";

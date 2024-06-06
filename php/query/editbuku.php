@@ -42,9 +42,9 @@ if (empty($namabuku)){
     if ($result) {
         
         $data = mysqli_fetch_array($result);
-        if (file_exists("/xampp/htdocs/perpustakaan/images/" . $data["gambar_buku"])) {
-            unlink("/xampp/htdocs/perpustakaan/images/" . $data["gambar_buku"]);
-            move_uploaded_file($lokasi, "/xampp/htdocs/perpustakaan/images/" . $foto);
+        if (file_exists("../../images/images_buku/" . $data["gambar_buku"])) {
+            unlink("../../images/images_buku/" . $data["gambar_buku"]);
+            move_uploaded_file($lokasi, "../../images/images_buku/" . $foto);
             $query = "UPDATE tb_buku SET  
             nama_buku = '$namabuku', 
             penulis = '$penulis', 
@@ -69,7 +69,7 @@ if (empty($namabuku)){
             }
         }
         else {
-            move_uploaded_file($lokasi, "/xampp/htdocs/perpustakaan/images/" . $foto);
+            move_uploaded_file($lokasi, "../../images/images_buku/" . $foto);
             $query = "UPDATE tb_buku SET  
             nama_buku = '$namabuku', 
             penulis = '$penulis', 

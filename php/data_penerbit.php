@@ -1,5 +1,5 @@
 <?php
-include("/xampp/htdocs/perpustakaan/php/query/config.php");
+include("query/config.php");
 
 $query = "SELECT * FROM tb_penerbit";
 $result = mysqli_query($connect, $query);

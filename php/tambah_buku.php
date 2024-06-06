@@ -41,7 +41,7 @@
                                         <select id="penulis" name="penulis" class="custom-select">
                                             <option value="-Pilih Penulis-"></option>
                                             <?php
-                                            include("/xampp/htdocs/perpustakaan/php/query/config.php");
+                                            include("query/config.php");
                                             $query = "SELECT * FROM tb_penulis";
                                             $result = mysqli_query($connect, $query);
 
@@ -59,7 +59,7 @@
                                         <select id="penerbit" name="penerbit" class="custom-select">
                                             <option value="-Pilih Penerbit-"></option>
                                             <?php
-                                            include("/xampp/htdocs/perpustakaan/php/query/config.php");
+                                            include("query/config.php");
                                             $query = "SELECT * FROM tb_penerbit";
                                             $result = mysqli_query($connect, $query);
 
@@ -92,7 +92,7 @@
                                         <select id="rak_buku" name="rak_buku" class="custom-select">
                                             <option value="-Pilih rak_buku-"></option>
                                             <?php
-                                            include("/xampp/htdocs/perpustakaan/php/query/config.php");
+                                            include("query/config.php");
                                             $query = "SELECT * FROM tb_rak";
                                             $result = mysqli_query($connect, $query);
 

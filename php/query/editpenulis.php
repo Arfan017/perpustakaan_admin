@@ -7,7 +7,7 @@ $namapenulis = $_POST['nama_penulis'];
 if (empty($namapenulis)) {
     echo "Mohon lengkapi semua kolom!";
 } else {
-    $query = "UPDATE penulis SET  
+    $query = "UPDATE tb_penulis SET  
     nama_penulis = '$namapenulis' 
     WHERE id_penulis = '$id_penulis' ";
     $result = mysqli_query($connect, $query);

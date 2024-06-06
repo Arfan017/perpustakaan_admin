@@ -1,6 +1,6 @@
 <?php
 
-include("/xampp/htdocs/perpustakaan/php/query/config.php");
+include("query/config.php");
 $query = "SELECT * FROM tb_penulis";
 $result = mysqli_query($connect, $query);
 $data;

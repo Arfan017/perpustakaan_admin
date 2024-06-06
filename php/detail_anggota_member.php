@@ -1,5 +1,5 @@
 <?php
-include("/xampp/htdocs/perpustakaan/php/query/config.php");
+include("query/config.php");
 
 $id_register = $_GET["id_register"];
 $data;
@@ -52,7 +52,7 @@ if (isset($id_register)) {
                                             <div class="card card-primary card-outline">
                                                 <div class="card-body box-profile">
                                                     <div class="text-center">
-                                                        <img style="height: 400px;" class=" img-fluid" src="/perpustakaan/images/6630caa93bcc0_icons8-star-48.png" alt="User profile picture">
+                                                        <img style="height: 400px;" class=" img-fluid" src="http://localhost/perpustakaan/images/images_profile/<?= $data['gambar'] ?>" alt="User profile picture">
                                                     </div>
                                                 </div>
                                                 <!-- /.card-body -->

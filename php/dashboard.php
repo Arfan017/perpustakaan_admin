@@ -1,5 +1,5 @@
 <?php
-include('/xampp/htdocs/perpustakaan/php/query/config.php');
+include("query/config.php");
 
 $queryDataBuku = "SELECT COUNT(*) AS databuku FROM tb_buku;";
 $resultQueryDataBuku = mysqli_query($connect, $queryDataBuku);

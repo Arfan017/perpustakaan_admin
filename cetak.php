@@ -1,8 +1,28 @@
+<?php
+include("php/query/config.php");
+date_default_timezone_set('Asia/Jayapura');
+
+$id_registrasi = $_GET['id_register'];
+$data;
+
+if (isset($id_registrasi)) {
+  $query = "SELECT * FROM user_member WHERE id_register = '$id_registrasi'";
+  $result = mysqli_query($connect, $query);
+  if ($result) {
+    $data = mysqli_fetch_array($result);
+  }
+} else {
+  echo "Data id_registrasi Kosong";
+}
+
+require_once 'vendor/autoload.php';
+
+$html = "
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 
   <style>
     @font-face {
@@ -149,7 +169,7 @@
       font-size: larger;
       font-weight: bolder;
   }
-  
+
   .table-2{
     position: absolute;
     bottom: 0px;
@@ -165,62 +185,62 @@
 </head>
 
 <body>
-  <div class="bg-sertif">
-    <div class="overlay">
-      <div class="body-sertif">
-          <table class="table-1">
+  <div class='bg-sertif'>
+    <div class='overlay'>
+      <div class='body-sertif'>
+          <table class='table-1'>
             <tbody>
               <tr>
                 <td>
-                  <h1 class="txt-pekerjaan">PEKERJAAN</h1>
+                  <h1 class='txt-pekerjaan'>PEKERJAAN</h1>
                 </td>
-                <td align="right">
-                  <h1 class="kartu-anggota">PERPUSTAKAAN DAERAH <br> KOTA SORONG</h1>
+                <td align='right'>
+                  <h1 class='kartu-anggota'>PERPUSTAKAAN DAERAH <br> KOTA SORONG</h1>
                 </td>
               </tr>
             </tbody>
           </table>
 
-        <h2 align="right">KARTU TANDA ANGGOTA</h2>
+        <h2 align='right'>KARTU TANDA ANGGOTA</h2>
 
-        <div class="content-biodata">
-          <table class="table-2">
+        <div class='content-biodata'>
+          <table class='table-2'>
             <tbody>
               <tr>
                 <td>
-                  <div class="biodata">
-                    <p class="nama">Nama Lengkap</p>
-                    <p class="alamat">Alamat</p>
+                  <div class='biodata'>
+                    <p class='nama'> " . $data['nama'] . " </p>
+                    <p class='alamat'> " . $data['alamat1'] . "  </p>
 
-                    <table style="margin-top: 70px;">
+                    <table style='margin-top: 70px;'>
                       <tbody>
                         <tr>
                           <td>
-                            <h2 style="color: #2B5430;">No. Member</h2>
+                            <h2 style='color: #2B5430;'>No. Member</h2>
                           </td>
                           <td>
-                            <h2 style="color: #2B5430;">Sience</h2>
+                            <h2 style='color: #2B5430;'>Sience</h2>
                           </td>
                         </tr>
                         <tr>
-                          <td align="center">
-                            <p class="no-member-2">00001</p>
+                          <td align='center'>
+                            <p class='no-member-2'> " . $data['no_member'] . "  </p>
                           </td>
-                          <td align="center">
-                            <p class="sience-2">30-01-2024</p>
+                          <td align='center'>
+                            <p class='sience-2'> ". date("d-M-Y") . " </p>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   
-                    <img style="margin-top: 20px;" src="http://localhost/perpustakaan/images/pin.png" alt="" width="20" height="20">
-                    <p style="display: inline-block; color: #2B5430;">Universitas Muhammadiyah Sorong</p>
+                    <img style='margin-top: 20px;' src='http://localhost/perpustakaan/images/pin.png' alt=' width='20' height='20'>
+                    <p style='display: inline-block; color: #2B5430;'> " . $data['alamat_institusi'] . " </p>
                   </div>
                 </td>
-                <td align="right">
-                  <div class="bingkai-foto-1">
-                    <div class="bingkai-foto-2">
-                      <img src="http://localhost/perpustakaan/images/foto.png" width="186" height="236">
+                <td align='right'>
+                  <div class='bingkai-foto-1'>
+                    <div class='bingkai-foto-2'>
+                      <img src='http://localhost/perpustakaan/images/images_profile/" . $data['gambar'] . "' width='186' height='236'>
                     </div>
                   </div>
                 </td>
@@ -233,3 +253,29 @@
   </div>
 </body>
 </html>
+";
+
+// reference the Dompdf namespace
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+$options = new Options();
+$options->set('isRemoteEnabled', true);
+
+// instantiate and use the dompdf class
+$dompdf = new Dompdf($options);
+
+// (Optional) Setup the paper size and orientation
+$dompdf->setPaper('A4', 'landscape');
+
+// Load HTML content
+$dompdf->loadHtml($html);
+
+// Render the HTML as PDF
+$dompdf->render();
+
+// Output the generated PDF to Browser
+$dompdf->stream();
+
+header("Location:/perpustakaan/?hal=data_anggota_lama");
+exit;

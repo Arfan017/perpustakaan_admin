@@ -27,7 +27,7 @@ if (empty($namabuku) || empty($penulis) || empty($penerbit) || empty($nisn) || e
         echo "Ukuran file terlalu besar (Lebig dari 1MB)!";
     } else {
 
-        move_uploaded_file($lokasi, "/xampp/htdocs/perpustakaan/images/" . $foto);
+        move_uploaded_file($lokasi, "../../images/images_buku/" . $foto);
         // Insert ke database
 
         $query = "INSERT INTO tb_buku (kd_buku, nama_buku, penulis, penerbit, `nisn_isbn`, tahun_terbit, halaman_buku, id_rak, stok, tentang, gambar_buku) 

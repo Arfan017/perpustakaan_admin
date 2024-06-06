@@ -1,5 +1,5 @@
 <?php
-include("/xampp/htdocs/perpustakaan/php/query/config.php");
+include("query/config.php");
 
 $kd_buku = $_GET["kd_buku"];
 $data;
@@ -40,7 +40,7 @@ if (isset($kd_buku)) {
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img style="height: 400px;" class=" img-fluid" src="/perpustakaan/images/<?= $data['gambar_buku'] ?>" alt="User profile picture">
+                                <img style="height: 400px;" class=" img-fluid" src="http://localhost/perpustakaan/images/images_buku/<?= $data['gambar_buku'] ?>" alt="User profile picture">
                             </div>
                         </div>
                         <!-- /.card-body -->

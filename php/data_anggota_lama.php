@@ -1,8 +1,9 @@
 <?php
+include("query/config.php");
 
-
-include("/xampp/htdocs/perpustakaan/php/query/config.php");
-$query = "SELECT user_member.*, user_register.status FROM user_register JOIN user_member ON user_register.id = user_member.id_register WHERE user_register.status = '1';";
+$query = "SELECT user_member.*, user_register.status FROM user_register 
+            JOIN user_member ON user_register.id = user_member.id_register
+            WHERE user_register.status = '1';";
 $result = mysqli_query($connect, $query);
 $data;
 ?>
@@ -64,10 +65,10 @@ $data;
                                                 <a href="?hal=detail_anggota_member&id_register=<?= $data['id_register'] ?>">
                                                     <button type="button" class="btn btn-success">Detail</button>
                                                 </a>
-                                                <a class="btn_delete" href="php/query/deleteanggota_lama.php?no_member=<?= $data['no_member'] ?>">
+                                                <a class="btn_delete" href="query/deleteanggota.php?id_register=<?= $data['id_register'] ?>">
                                                     <button type="button" class="btn btn-danger">Hapus</button>
                                                 </a>
-                                                <a class="btn_delete" href="#">
+                                                <a href="cetak.php?id_register=<?= $data['id_register'] ?>">
                                                     <button type="button" class="btn btn-warning">Cetak</button>
                                                 </a>
                                             </td>

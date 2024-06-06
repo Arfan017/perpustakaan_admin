@@ -7,7 +7,7 @@ $namapenerbit = $_POST['nama_penerbit'];
 if (empty($namapenerbit)) {
     echo "Mohon lengkapi semua kolom!";
 } else {
-    $query = "UPDATE penerbit SET  
+    $query = "UPDATE tb_penerbit SET  
     nama_penerbit = '$namapenerbit' 
     WHERE id_penerbit = '$id_penerbit' ";
     $result = mysqli_query($connect, $query);

@@ -1,5 +1,5 @@
 <?php
-include("/xampp/htdocs/perpustakaan/php/query/config.php");
+include("query/config.php");
 
 $id_penerbit = $_GET["id_penerbit"];
 $data;

@@ -1,7 +1,6 @@
 <?php
+include("query/config.php");
 
-
-include("/xampp/htdocs/perpustakaan/php/query/config.php");
 $query = "SELECT * FROM tb_buku";
 $result = mysqli_query($connect, $query);
 $data;

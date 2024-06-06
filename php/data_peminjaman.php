@@ -1,7 +1,6 @@
 <?php
+include("query/config.php");
 
-
-include("/xampp/htdocs/perpustakaan/php/query/config.php");
 $query = "SELECT tb_pinjam.*, user_member.nama, tb_buku.nama_buku FROM user_member JOIN tb_pinjam ON tb_pinjam.no_member = user_member.id_register JOIN tb_buku ON tb_pinjam.id_buku = tb_buku.kd_buku;";
 $result = mysqli_query($connect, $query);
 $data;
@@ -29,12 +28,6 @@ $data;
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <!-- <h3 class="card-title">DataTable with default features</h3> -->
-                            <a href="?hal=tambah_buku">
-                                <button type="button" class="btn btn-primary"><i class="fa fa-plus mr-2"></i>Tambah Buku</button>
-                            </a>
-                        </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
@@ -55,6 +48,14 @@ $data;
                                     $i = 0;
                                     while ($data = mysqli_fetch_array($result)) {
                                         $i++;
+                                        // untuk menghitung selisih hari terlambat
+                                        $t = date_create($data['tgl_kembali']);
+                                        $n = date_create(date('Y-m-d'));
+                                        $terlambat = date_diff($t, $n);
+                                        $hari = $terlambat->format("%a");
+
+                                        // menghitung denda
+                                        $denda = $hari * 1000;
                                     ?>
                                         <tr>
                                             <td><?= $i ?></td>
@@ -63,7 +64,7 @@ $data;
                                             <td><?= $data['tgl_pinjam'] ?></td>
                                             <td><?= $data['tgl_kembali'] ?></td>
                                             <td><?= $data['status'] ?></td>
-                                            <td><?= $data['denda'] ?></td>
+                                            <td><?= $denda ?></td>
                                             <td class="text-center">
                                                 <a href="php/query/pengembalianbuku.php?id_buku=<?= $data['id_buku'] ?>&id_member=<?= $data['no_member'] ?>">
                                                     <button type="button" class="btn <?= ($data['status'] == 'kembali') ? 'btn-success' : 'btn-warning disable' ?>" <?= ($data['status'] == 'kembali') ? 'disabled' : '' ?>>kembali</button>
