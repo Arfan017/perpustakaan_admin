@@ -20,7 +20,7 @@ $namatinstitusi = $_POST["namatinstitusi"];
 $alamatinstitusi = $_POST["alamatinstitusi"];
 $image = $_POST["gambar"];
 
-$path_image = "/xampp/htdocs/perpustakaan/images/images_profile/";
+$path_image = "../../images/images_profile/";
 $imageStore = rand()."-".time().".jpeg";
 $target_path = $path_image."/".$imageStore;
 file_put_contents($target_path, base64_decode($image));

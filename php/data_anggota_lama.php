@@ -68,7 +68,7 @@ $data;
                                                 <a class="btn_delete" href="query/deleteanggota.php?id_register=<?= $data['id_register'] ?>">
                                                     <button type="button" class="btn btn-danger">Hapus</button>
                                                 </a>
-                                                <a href="cetak.php?id_register=<?= $data['id_register'] ?>">
+                                                <a href="php/cetak.php?id_register=<?= $data['id_register'] ?>">
                                                     <button type="button" class="btn btn-warning">Cetak</button>
                                                 </a>
                                             </td>
