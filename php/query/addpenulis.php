@@ -8,7 +8,7 @@ if (isset($namapenulis)) {
     $result = mysqli_query($connect, $query);
 
     if ($result) {
-        header("Location:/perpustakaan/?hal=data_penulis");
+        header("Location:/perpustakaan/php/?hal=data_penulis");
         exit;
     }
     echo json_encode($response);

@@ -7,7 +7,7 @@ if (isset($id_penulis)) {
     $query = "DELETE FROM tb_penulis WHERE id_penulis = '$id_penulis'";
     $result = mysqli_query($connect, $query);
     if ($result) {
-        header("Location:/perpustakaan/?hal=data_penulis");
+        header("Location:/perpustakaan/php/?hal=data_penulis");
     }
 } else {
     echo "id kosong";

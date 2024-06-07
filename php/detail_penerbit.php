@@ -118,7 +118,7 @@ if (isset($id_penerbit)) {
                                     <!-- /.tab-pane -->
                                 </div>
                                 <div class="tab-pane" id="Edit">
-                                    <form action="php/query/editpenerbit.php" method="POST">
+                                    <form action="query/editpenerbit.php" method="POST">
                                         <div class="row">
                                             <div class="form-group col-6">
                                                 <label for="id_penerbit">Kode Penerbit</label>

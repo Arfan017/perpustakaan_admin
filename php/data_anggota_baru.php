@@ -66,10 +66,10 @@ $data;
                                                 <a href="?hal=detail_anggota_baru&no_member=<?= $data['no_member'] ?>">
                                                     <button type="button" class="btn btn-primary">Detail</button>
                                                 </a>
-                                                <a class="btn_delete" href="php/query/deleteanggotabaru.php?no_member=<?= $data['no_member'] ?>">
+                                                <a class="btn_delete" href="query/deleteanggotabaru.php?no_member=<?= $data['no_member'] ?>">
                                                     <button type="button" class="btn btn-danger">Hapus</button>
                                                 </a>
-                                                <a href="php/query/terimaanggotabaru.php?id_regis=<?= $data['id_register'] ?>">
+                                                <a href="query/terimaanggotabaru.php?id_regis=<?= $data['id_register'] ?>">
                                                     <button type="button" class="btn btn-success">Terima</button>
                                                 </a>
                                             </td>

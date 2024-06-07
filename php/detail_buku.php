@@ -40,7 +40,7 @@ if (isset($kd_buku)) {
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img style="height: 400px;" class=" img-fluid" src="http://localhost/perpustakaan/images/images_buku/<?= $data['gambar_buku'] ?>" alt="User profile picture">
+                                <img style="height: 400px;" class=" img-fluid" src="../images/images_buku/<?= $data['gambar_buku'] ?>" alt="User profile picture">
                             </div>
                         </div>
                         <!-- /.card-body -->
@@ -75,7 +75,7 @@ if (isset($kd_buku)) {
                                             <select id="penulis" class="custom-select" disabled>
                                                 <option value="-Pilih Penulis-"></option>
                                                 <?php
-                                                include("/xampp/htdocs/perpustakaan/php/query/config.php");
+                                                include("query/config.php");
                                                 $query = "SELECT * FROM tb_penulis";
                                                 $result = mysqli_query($connect, $query);
                                                 while ($penulis = mysqli_fetch_array($result)) {
@@ -94,7 +94,7 @@ if (isset($kd_buku)) {
                                             <select id="penerbit" class="custom-select" disabled>
                                                 <option value="-Pilih Penerbit-"></option>
                                                 <?php
-                                                include("/xampp/htdocs/perpustakaan/php/query/config.php");
+                                                include("query/config.php");
                                                 $query = "SELECT * FROM tb_penerbit";
                                                 $result = mysqli_query($connect, $query);
                                                 while ($penerbit = mysqli_fetch_array($result)) {
@@ -129,7 +129,7 @@ if (isset($kd_buku)) {
                                             <select id="rak_buku" class="custom-select" disabled>
                                                 <option value="-Pilih Rak_Buku-"></option>
                                                 <?php
-                                                include("/xampp/htdocs/perpustakaan/php/query/config.php");
+                                                include("query/config.php");
                                                 $query = "SELECT * FROM tb_rak";
                                                 $result = mysqli_query($connect, $query);
                                                 while ($rak_buku = mysqli_fetch_array($result)) {
@@ -159,7 +159,7 @@ if (isset($kd_buku)) {
                                 </div>
 
                                 <div class="tab-pane" id="Edit">
-                                    <form action="php/query/editbuku.php" method="POST" enctype="multipart/form-data">
+                                    <form action="query/editbuku.php" method="POST" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="form-group col-6">
                                                 <label for="kd_buku">Kode Buku</label>
@@ -176,7 +176,7 @@ if (isset($kd_buku)) {
                                                 <select id="penulis" name="penulis" class="custom-select">
                                                     <option value="-Pilih penulis-"></option>
                                                     <?php
-                                                    include("/xampp/htdocs/perpustakaan/php/query/config.php");
+                                                    include("/query/config.php");
                                                     $query = "SELECT * FROM tb_penulis";
                                                     $result = mysqli_query($connect, $query);
                                                     while ($penulis = mysqli_fetch_array($result)) {
@@ -195,7 +195,7 @@ if (isset($kd_buku)) {
                                                 <select id="penerbit" name="penerbit" class="custom-select">
                                                     <option value="-Pilih penerbit-"></option>
                                                     <?php
-                                                    include("/xampp/htdocs/perpustakaan/php/query/config.php");
+                                                    include("query/config.php");
                                                     $query = "SELECT * FROM tb_penerbit";
                                                     $result = mysqli_query($connect, $query);
                                                     while ($penerbit = mysqli_fetch_array($result)) {
@@ -229,7 +229,7 @@ if (isset($kd_buku)) {
                                                 <select id="rak_buku" name="rak_buku" class="custom-select">
                                                     <option value="-Pilih Rak_Buku-"></option>
                                                     <?php
-                                                    include("/xampp/htdocs/perpustakaan/php/query/config.php");
+                                                    include("query/config.php");
                                                     $query = "SELECT * FROM tb_rak";
                                                     $result = mysqli_query($connect, $query);
                                                     while ($rak_buku = mysqli_fetch_array($result)) {

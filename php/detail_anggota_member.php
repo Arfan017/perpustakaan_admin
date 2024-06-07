@@ -126,7 +126,7 @@ if (isset($id_register)) {
                                                         </div>
 
                                                         <div class="tab-pane" id="Edit">
-                                                            <form action="php/query/editmember.php" method="POST">
+                                                            <form action="query/editmember.php" method="POST">
                                                                 <input name="id_user" type="hidden" class="form-control" id="id_user" placeholder="nama" value="<?= $data['id_register'] ?>">
                                                                 <div class="row">
                                                                     <div class="form-group col-6">

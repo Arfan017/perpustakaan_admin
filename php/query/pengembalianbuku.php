@@ -17,7 +17,7 @@ if (empty($id_buku) && empty($id_buku)) {
         if ($result_update_status) {
             $response['success'] = true;
             $response['message'] = "Pinjam buku berhasil";
-            header("Location:/perpustakaan/?hal=data_peminjaman");
+            header("Location:/perpustakaan/php/?hal=data_peminjaman");
             exit;
         }
     }

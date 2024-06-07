@@ -29,7 +29,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="php/query/addpenerbit.php" method="POST">
+                        <form action="query/addpenerbit.php" method="POST">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="form-group col-6">

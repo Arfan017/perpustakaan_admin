@@ -34,7 +34,7 @@ if (empty($Nama) || empty($Jenkel) || empty($Ttl) || empty($Email) || empty($Ema
     WHERE id = '$id_user' ";
     $result2 = mysqli_query($connect, $query2);
     if ($result1 && $result2) {
-        header("Location:/perpustakaan/?hal=detail_anggota_member&id_register=$id_user");
+        header("Location:/perpustakaan/php/?hal=detail_anggota_member&id_register=$id_user");
         exit;
     } else {
         $response["success"] = 'false';

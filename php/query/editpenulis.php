@@ -14,7 +14,7 @@ if (empty($namapenulis)) {
 
     if ($result) {
         // Jika berhasil, pindahkan pengguna ke halaman lain
-        header("Location:/perpustakaan/?hal=data_penulis");
+        header("Location:/perpustakaan/php/?hal=data_penulis");
         exit;
     } else {
         // Jika gagal, tampilkan pesan error atau lakukan penanganan kesalahan lainnya

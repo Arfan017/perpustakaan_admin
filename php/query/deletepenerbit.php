@@ -7,7 +7,7 @@ if (isset($id_penerbit)) {
     $query = "DELETE FROM tb_penerbit WHERE id_penerbit = '$id_penerbit'";
     $result = mysqli_query($connect, $query);
     if ($result) {
-        header("Location:/perpustakaan/?hal=data_penerbit");
+        header("Location:/perpustakaan/php/?hal=data_penerbit");
         exit;
     }
 } else {

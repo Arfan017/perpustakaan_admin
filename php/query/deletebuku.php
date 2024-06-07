@@ -10,7 +10,7 @@ if (isset($kd_buku)) {
         $query = "DELETE FROM tb_buku WHERE kd_buku = '$kd_buku'";
         $result = mysqli_query($connect, $query);
         if ($result) {
-            header("Location:/perpustakaan/?hal=data_buku");
+            header("Location:/perpustakaan/php/?hal=data_buku");
             exit;
         }
     } 

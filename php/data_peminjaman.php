@@ -66,7 +66,7 @@ $data;
                                             <td><?= $data['status'] ?></td>
                                             <td><?= $denda ?></td>
                                             <td class="text-center">
-                                                <a href="php/query/pengembalianbuku.php?id_buku=<?= $data['id_buku'] ?>&id_member=<?= $data['no_member'] ?>">
+                                                <a href="query/pengembalianbuku.php?id_buku=<?= $data['id_buku'] ?>&id_member=<?= $data['no_member'] ?>">
                                                     <button type="button" class="btn <?= ($data['status'] == 'kembali') ? 'btn-success' : 'btn-warning disable' ?>" <?= ($data['status'] == 'kembali') ? 'disabled' : '' ?>>kembali</button>
                                                 </a>
                                             </td>

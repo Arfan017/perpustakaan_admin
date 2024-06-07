@@ -56,7 +56,7 @@ $data;
                                                 <a href="?hal=detail_penulis&id_penulis=<?= $data['id_penulis'] ?>">
                                                     <button type="button" class="btn btn-success">Detail</button>
                                                 </a>
-                                                <a class="btn_delete" href="php/query/deletepenulis.php?id_penulis=<?= $data['id_penulis'] ?>">
+                                                <a class="btn_delete" href="query/deletepenulis.php?id_penulis=<?= $data['id_penulis'] ?>">
                                                     <button type="button" class="btn btn-warning">Hapus</button>
                                                 </a>
                                             </td>

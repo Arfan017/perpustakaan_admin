@@ -10,7 +10,7 @@ if (empty($id_regis)) {
     $result = mysqli_query($connect, $query);
 
     if ($result) {
-        header("Location:/perpustakaan/?hal=data_anggota_baru");
+        header("Location:/perpustakaan/php/?hal=data_anggota_baru");
         exit;
     }
 }

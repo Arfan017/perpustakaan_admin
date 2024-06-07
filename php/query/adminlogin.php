@@ -14,8 +14,10 @@ if (!isset($username) || !isset($password)) {
         $row = mysqli_fetch_assoc($result);
         $PassHash = $row["password"];
         if (password_verify($password, $PassHash)) {
-            header("Location:/perpustakaan/?hal=dashboard");
+            header("Location:/perpustakaan/php/?hal=dashboard");
             exit;
-        } 
+        } else {
+            
+        }
     }
 }

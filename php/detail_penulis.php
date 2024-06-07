@@ -118,7 +118,7 @@ if (isset($id_penulis)) {
                                     <!-- /.tab-pane -->
                                 </div>
                                 <div class="tab-pane" id="Edit">
-                                    <form action="php/query/editpenulis.php" method="POST">
+                                    <form action="query/editpenulis.php" method="POST">
                                         <div class="row">
                                             <div class="form-group col-6">
                                                 <label for="id_penulis">Kode Penulis</label>

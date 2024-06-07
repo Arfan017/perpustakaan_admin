@@ -61,7 +61,7 @@ if (empty($namabuku)){
 
             if ($result) {
                 // Jika berhasil, pindahkan pengguna ke halaman lain
-                header("Location:/perpustakaan/?hal=data_buku");
+                header("Location:/perpustakaan/php/?hal=data_buku");
                 exit;
             } else {
                 // Jika gagal, tampilkan pesan error atau lakukan penanganan kesalahan lainnya
@@ -86,7 +86,7 @@ if (empty($namabuku)){
 
             if ($result) {
                 // Jika berhasil, pindahkan pengguna ke halaman lain
-                header("Location:/perpustakaan/?hal=data_buku");
+                header("Location:/perpustakaan/php/?hal=data_buku");
                 exit;
             } else {
                 // Jika gagal, tampilkan pesan error atau lakukan penanganan kesalahan lainnya
