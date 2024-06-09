@@ -1,26 +1,23 @@
 <?php
-include('config.php');
-include('sendemail.php');
+    function kiriEmail($kepada, $subjek, $pesan) {
+        require_once('../../plugins/library-email/function.php');
 
-$id_regis = $_GET['id_regis'];
-$emailuser = $_GET['emailuser'];
-$nama = $_GET['nama'];
+        $to       = $kepada;
+        $subject  = $subjek;
+        $message  = $pesan;
+        return smtp_mail($to, $subject, $message, '', '', 0, 0, true);
 
-$html = "";
+        /*
+        jika menggunakan fungsi mail biasa : mail($to, $subject, $message);
+        dapat juga menggunakan fungsi smtp secara dasar : smtp_mail($to, $subject, $message);
+        jangan lupa melakukan konfigurasi pada file function.php
+        */
+   }
 
-if (empty($id_regis)) {
-    
-} else {
-    $query = "UPDATE user_register SET status = '1' WHERE id = '$id_regis'";
-    $result = mysqli_query($connect, $query);
-
-    if ($result) {
-        header("Location:/perpustakaan/php/?hal=data_anggota_baru");
-        kiriEmail(
-            $emailuser,
-            "Pendaftaran Member Baru Berhasil",
-            "<html>
-                <body style='margin: 0;'>
+   $to = "arfankece06@gmail.com";
+   $subjek = "Pendaftaran Member Baru Berhasil";
+   $pesan = "<html>
+   <body style='margin: 0;'>
     <header style='background-color: aquamarine; padding: 10px;'>
         <center>
             <h1>Pendaftaran Member Baru Berhasil 🌟</h1>
@@ -53,10 +50,7 @@ if (empty($id_regis)) {
             Ayo Mulailah petualangan membaca dan biarkan imajinasi Anda melayang bebas!🌟</b></center>
     </div>
 </body>
-            </html>"
-        );
-        exit;
-    }
-}
+            </html>";
 
+    kiriEmail($to, $subjek, $pesan);
 ?>

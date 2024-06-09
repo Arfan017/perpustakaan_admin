@@ -1,7 +1,7 @@
 <?php
 include("query/config.php");
 
-$query = "SELECT user_member.*, user_register.status FROM user_register 
+$query = "SELECT user_member.*, user_register.status, user_register.email FROM user_register 
             JOIN user_member ON user_register.id = user_member.id_register
             WHERE user_register.status = '0';";
 
@@ -44,7 +44,7 @@ $data;
                                     <tr>
                                         <th>No Member</th>
                                         <th>Nama</th>
-                                        <th>Jenis kelamin</th>
+                                        <th>Email</th>
                                         <th>Tempat Tanggal Lahir</th>
                                         <th>Alamat</th>
                                         <th>NoHp</th>
@@ -58,10 +58,11 @@ $data;
                                         <tr>
                                             <td><?= $data['no_member'] ?></td>
                                             <td><?= $data['nama'] ?></td>
-                                            <td><?= $data['jenkel'] ?></td>
+                                            <td><?= $data['email'] ?></td>
                                             <td><?= $data['ttgl_lahir'] ?></td>
                                             <td><?= $data['alamat1'] ?></td>
                                             <td><?= $data['no_hp'] ?></td>
+
                                             <td class="text-center col-3">
                                                 <a href="?hal=detail_anggota_baru&no_member=<?= $data['no_member'] ?>">
                                                     <button type="button" class="btn btn-primary">Detail</button>
@@ -69,7 +70,7 @@ $data;
                                                 <a class="btn_delete" href="query/deleteanggotabaru.php?no_member=<?= $data['no_member'] ?>">
                                                     <button type="button" class="btn btn-danger">Hapus</button>
                                                 </a>
-                                                <a href="query/terimaanggotabaru.php?id_regis=<?= $data['id_register'] ?>">
+                                                <a href="query/terimaanggotabaru.php?id_regis=<?= $data['id_register'] ?>&nama=<?= $data['nama'] ?>&emailuser=<?= $data['email'] ?>">
                                                     <button type="button" class="btn btn-success">Terima</button>
                                                 </a>
                                             </td>
@@ -80,7 +81,7 @@ $data;
                                     <tr>
                                         <th>No Member</th>
                                         <th>Nama</th>
-                                        <th>Jenis kelamin</th>
+                                        <th>Email</th>
                                         <th>Tempat Tanggal Lahir</th>
                                         <th>Alamat</th>
                                         <th>NoHp</th>

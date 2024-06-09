@@ -40,12 +40,14 @@ $html = "
 
   h1,
   h2,
+  h3,
   p {
       font-family: 'MyFont', sans-serif;
   }
 
   body,
   h2,
+  h3,
   p {
       margin: 0px;
       padding: 0px;
@@ -85,6 +87,7 @@ $html = "
 
   table{
       width: 100%;
+      border-collapse: collapse;
   }
 
   .head {
@@ -187,6 +190,36 @@ $html = "
     height: 100px;
   }
 
+        .txt-catatan {
+            margin: 0px;
+            background-color: #468ae2;
+            padding: 10px;
+            color: #FFF;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .body-ketentuan{
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .txt-ketentuan {
+            width: 100%;
+            margin: 0px;
+            background-color: #468ae2;
+            padding: 10px;
+            color: #FFF;
+            position: relative;
+        }
+
+        .sertif-gambar {
+            position: absolute;
+            bottom: 20px; /* Sesuaikan dengan jarak dari bawah yang diinginkan */
+        }
   </style>
 </head>
 
@@ -253,6 +286,27 @@ $html = "
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div style='page-break-before: always;'>
+        <h3 style='position: absolute; top: 20px; left: 20px; ' class='txt-catatan'>CATATAN</h3>
+                <div class='body-ketentuan'>
+                    <center>
+                        <h1>KETENTUAN PERPUSTAKAAN INI:</h1><br>
+                    </center>
+
+                    <h3 class='txt-ketentuan'>1. DIBAWA SETIAP BERKUNJUNG KE PERTPUSTAKAAN DAERAH KOTA SORONG</h3><br>
+                    <h3 class='txt-ketentuan'>2. TIDAK DAPAT DIPERPANJANG KEPADA ORANG LAIN KOTA SORONG</h3><br>
+                    <h3 class='txt-ketentuan'>3. PENGGANTIAN KARTU HILANG DAN INGIN MENCETAK KEMBBALI DIKENANAKN BIAYA ADMINITRASI
+                    </h3><br>
+                    <h3 class='txt-ketentuan'>4. APA BILA HILANG DAN ADA YANG MENEMUKAN KARTU INI, BISA MENGANTARKANNYA KE GEDUNG
+                        LAYANAN PERPUSTAKAAN</h3>
+
+                </div>
+                <div class='sertif-gambar'>
+                    <img style='margin-top: 20px;' src='http://localhost/perpustakaan/images/pin.png' alt=' width=' 20' height='20'>
+                    <h3 style='display: inline-block; color: #2B5430;'> " . $data['alamat_institusi'] . " </h3>
+                </div>
         </div>
       </div>
     </div>

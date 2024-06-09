@@ -1,0 +1,11 @@
+[06-Jun-2024 23:35:25 UTC] PHP Fatal error:  __autoload() is no longer supported, use spl_autoload_register() instead in /home/beliauke/public_html/library-email/PHPMailer/PHPMailerAutoload.php on line 45
+[06-Jun-2024 23:35:28 UTC] PHP Fatal error:  __autoload() is no longer supported, use spl_autoload_register() instead in /home/beliauke/public_html/library-email/PHPMailer/PHPMailerAutoload.php on line 45
+[06-Jun-2024 23:38:04 UTC] PHP Fatal error:  __autoload() is no longer supported, use spl_autoload_register() instead in /home/beliauke/public_html/library-email/PHPMailer/PHPMailerAutoload.php on line 45
+[06-Jun-2024 23:38:05 UTC] PHP Fatal error:  __autoload() is no longer supported, use spl_autoload_register() instead in /home/beliauke/public_html/library-email/PHPMailer/PHPMailerAutoload.php on line 45
+[06-Jun-2024 23:40:39 UTC] PHP Fatal error:  __autoload() is no longer supported, use spl_autoload_register() instead in /home/beliauke/public_html/library-email/PHPMailer/PHPMailerAutoload.php on line 45
+[06-Jun-2024 23:40:40 UTC] PHP Fatal error:  __autoload() is no longer supported, use spl_autoload_register() instead in /home/beliauke/public_html/library-email/PHPMailer/PHPMailerAutoload.php on line 45
+[06-Jun-2024 23:40:41 UTC] PHP Fatal error:  __autoload() is no longer supported, use spl_autoload_register() instead in /home/beliauke/public_html/library-email/PHPMailer/PHPMailerAutoload.php on line 45
+[06-Jun-2024 23:40:42 UTC] PHP Fatal error:  __autoload() is no longer supported, use spl_autoload_register() instead in /home/beliauke/public_html/library-email/PHPMailer/PHPMailerAutoload.php on line 45
+[06-Jun-2024 23:43:01 UTC] PHP Fatal error:  __autoload() is no longer supported, use spl_autoload_register() instead in /home/beliauke/public_html/library-email/PHPMailer/PHPMailerAutoload.php on line 45
+[06-Jun-2024 23:43:02 UTC] PHP Fatal error:  __autoload() is no longer supported, use spl_autoload_register() instead in /home/beliauke/public_html/library-email/PHPMailer/PHPMailerAutoload.php on line 45
+[07-Jun-2024 01:38:16 UTC] PHP Warning:  stream_socket_enable_crypto(): Peer certificate CN=`gallarate.id.domainesia.com' did not match expected CN=`36.50.77.52' in /home/beliauke/public_html/library-email/PHPMailer/class.smtp.php on line 337
