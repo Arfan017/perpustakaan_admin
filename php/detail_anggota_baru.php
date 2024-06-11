@@ -5,7 +5,8 @@ $id_register = $_GET["id_register"];
 $data;
 
 if (isset($id_register)) {
-    $query = "SELECT user_member.*, user_register.email FROM user_register JOIN user_member ON user_register.id = user_member.id_register WHERE user_member.id_register = '$id_register';";
+    $query = "SELECT user_member.*, user_register.email FROM user_register JOIN user_member ON user_register.id = user_member.id_register 
+    WHERE user_member.id_register = '$id_register' AND user_register.status = '0';";
     $result = mysqli_query($connect, $query);
     if ($result) {
         $data = mysqli_fetch_array($result);
@@ -24,7 +25,7 @@ if (isset($id_register)) {
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Profil Member</li>
+                        <li class="breadcrumb-item active">Profil Pendaftar</li>
                     </ol>
                 </div>
             </div>
@@ -37,13 +38,14 @@ if (isset($id_register)) {
             <div class="row">
                 <div class="col-md">
                     <div class="card">
-                        <div class="card-header p-2">
+                        <!-- <div class="card-header p-2">
                             <ul class="nav nav-pills">
                                 <li class="nav-item"><a class="nav-link active" href="#biodata" data-toggle="tab">Biodata</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#peminjaman" data-toggle="tab">Peminjaman</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#riwayatpeminjaman" data-toggle="tab">Riwayat Peminjaman</a></li>
                             </ul>
-                        </div><!-- /.card-header -->
+                        </div> -->
+                        <!-- /.card-header -->
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="active tab-pane" id="biodata">
@@ -52,7 +54,7 @@ if (isset($id_register)) {
                                             <div class="card card-primary card-outline">
                                                 <div class="card-body box-profile">
                                                     <div class="text-center">
-                                                        <img style="height: 400px;" class=" img-fluid" src="http://localhost/perpustakaan/images/images_profile/<?= $data['gambar'] ?>" alt="User profile picture">
+                                                        <img style="height: 400px;" class=" img-fluid" src="../images/images_profile/<?= $data['gambar'] ?>" alt="User profile picture">
                                                     </div>
                                                 </div>
                                                 <!-- /.card-body -->
@@ -65,7 +67,7 @@ if (isset($id_register)) {
                                                 <div class="card-header p-2">
                                                     <ul class="nav nav-pills">
                                                         <li class="nav-item"><a class="nav-link active" href="#Detail" data-toggle="tab">Tentang user</a></li>
-                                                        <li class="nav-item"><a class="nav-link" href="#Edit" data-toggle="tab">Edit</a></li>
+                                                        <!-- <li class="nav-item"><a class="nav-link" href="#Edit" data-toggle="tab">Edit</a></li> -->
                                                     </ul>
                                                 </div><!-- /.card-header -->
                                                 <div class="card-body">

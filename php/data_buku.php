@@ -62,7 +62,7 @@ $data;
                                                     <button type="button" class="btn btn-success">Detail</button>
                                                 </a>
                                                 <a class="btn_delete" href="query/deletebuku.php?kd_buku=<?= $data['kd_buku'] ?>&gambar_buku=<?= $data['gambar_buku'] ?>">
-                                                    <button type="button" class="btn btn-warning">Hapus</button>
+                                                    <button type="button" class="btn btn-danger">Hapus</button>
                                                 </a>
                                             </td>
                                         </tr>

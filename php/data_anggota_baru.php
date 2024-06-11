@@ -64,7 +64,7 @@ $data;
                                             <td><?= $data['no_hp'] ?></td>
 
                                             <td class="text-center col-3">
-                                                <a href="?hal=detail_anggota_baru&no_member=<?= $data['no_member'] ?>">
+                                                <a href="?hal=detail_anggota_baru&id_register=<?= $data['id_register'] ?>">
                                                     <button type="button" class="btn btn-primary">Detail</button>
                                                 </a>
                                                 <a class="btn_delete" href="query/deleteanggotabaru.php?no_member=<?= $data['no_member'] ?>">

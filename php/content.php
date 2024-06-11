@@ -5,7 +5,7 @@ $halaman = array(
     "data_penulis", "tambah_penulis", "detail_penulis",
     "data_penerbit", "tambah_penerbit", "detail_penerbit",
     "data_anggota_lama", "data_anggota_baru", "detail_anggota_member", 
-    "data_peminjaman", "cetak"
+    "data_peminjaman", "cetak", "detail_anggota_baru", "data_rating"
 );
 
 if (isset($_GET['hal'])) {

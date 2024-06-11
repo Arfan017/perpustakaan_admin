@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard</title>
+  <title>PERDIKS</title>
+  <link rel="icon" href="images/logo.png" type="image/x-icon" />
   <!-- DataTables -->
   <link rel="stylesheet" href="../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -117,7 +118,7 @@
             </li>
             <li class="nav-item">
               <a href="?hal=data_penulis" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
+                <i class="nav-icon ion ion-person"></i>
                 <p>
                   Data Penulis
                 </p>
@@ -125,7 +126,7 @@
             </li>
             <li class="nav-item">
               <a href="?hal=data_penerbit" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
+                <i class="nav-icon ion ion-person"></i>
                 <p>
                   Data Penerbit
                 </p>
@@ -154,6 +155,14 @@
                 <i class="nav-icon ion ion-person"></i>
                 <p>
                   Peminjaman
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="?hal=data_rating" class="nav-link">
+                <i class="nav-icon ion ion-person"></i>
+                <p>
+                  Rating/Ulasan Buku
                 </p>
               </a>
             </li>
@@ -250,7 +259,7 @@
         "responsive": true,
         "lengthChange": false,
         "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+        // "buttons": ["copy", "csv", "excel", "pdf", "print"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
       $('#example2').DataTable({
         "paging": true,

@@ -30,8 +30,8 @@ $data;
                     <div class="card">
                         <div class="card-header">
                             <!-- <h3 class="card-title">DataTable with default features</h3> -->
-                            <a href="?hal=tambah_penerbit">
-                                <button type="button" class="btn btn-primary"><i class="fa fa-plus mr-2"></i>Tambah Penerbit</button>
+                            <a href="?hal=tambah_buku">
+                                <button type="button" class="btn btn-primary"><i class="fa fa-plus mr-2"></i>Tambah Buku</button>
                             </a>
                         </div>
                         <!-- /.card-header -->
@@ -40,7 +40,8 @@ $data;
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Penerbit</th>
+                                        <th>Penulis</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,7 +58,7 @@ $data;
                                                     <button type="button" class="btn btn-success">Detail</button>
                                                 </a>
                                                 <a class="btn_delete" href="query/deletepenerbit.php?id_penerbit=<?= $data['id_penerbit'] ?>">
-                                                    <button type="button" class="btn btn-warning">Hapus</button>
+                                                    <button type="button" class="btn btn-danger">Hapus</button>
                                                 </a>
                                             </td>
                                         </tr>
@@ -65,8 +66,9 @@ $data;
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Nama Penulis</th>
+                                        <th>Nama Buku</th>
+                                        <th>Penulis</th>
+                                        <th>Penerbit</th>
                                     </tr>
                                 </tfoot>
                             </table>
