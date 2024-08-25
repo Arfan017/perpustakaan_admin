@@ -30,8 +30,8 @@ $data;
                     <div class="card">
                         <div class="card-header">
                             <!-- <h3 class="card-title">DataTable with default features</h3> -->
-                            <a href="?hal=tambah_buku">
-                                <button type="button" class="btn btn-primary"><i class="fa fa-plus mr-2"></i>Tambah Buku</button>
+                            <a href="?hal=tambah_penulis">
+                                <button type="button" class="btn btn-primary"><i class="fa fa-plus mr-2"></i>Tambah Penulis</button>
                             </a>
                         </div>
                         <!-- /.card-header -->

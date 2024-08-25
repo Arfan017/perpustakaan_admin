@@ -5,13 +5,16 @@ $rating = $_POST['rating'];
 
 if (isset($rating)) {
     if ($rating === '1') {
-        $query = "SELECT tb_buku.*, tb_penerbit.nama_penerbit, ROUND(AVG(tb_rating.rating)) AS rata_rata_rating FROM tb_rating JOIN tb_buku ON tb_rating.id_buku = tb_buku.kd_buku JOIN tb_penerbit ON tb_penerbit.id_penerbit = tb_buku.penerbit GROUP BY tb_buku.kd_buku HAVING ROUND(AVG(tb_rating.rating)) >= 3;";
+        $query = "SELECT tb_buku.*, tb_penerbit.nama_penerbit, ROUND(AVG(tb_rating.rating)) AS rata_rata_rating FROM tb_rating 
+        JOIN tb_buku ON tb_rating.nisn_isbn = tb_buku.nisn_isbn 
+        JOIN tb_penerbit ON tb_penerbit.id_penerbit = tb_buku.penerbit 
+        GROUP BY tb_buku.nisn_isbn HAVING ROUND(AVG(tb_rating.rating)) >= 3;";
         $result = mysqli_query($connect, $query);
         // SELECT * FROM tb_buku WHERE id_rating >= 6
 
         $DataBuku = array();
         while ($row = mysqli_fetch_array($result)) {
-            $data['kd_buku'] = $row['kd_buku'];
+            // $data['kd_buku'] = $row['kd_buku'];
             $data['nama_buku'] = $row['nama_buku'];
             $data['penulis'] = $row['penulis'];
             $data['penerbit'] = $row['nama_penerbit'];
@@ -32,7 +35,7 @@ if (isset($rating)) {
         $DataBuku = array();
         while ($row = mysqli_fetch_array($result)) {
             $data['message'] = true;
-            $data['kd_buku'] = $row['kd_buku'];
+            // $data['kd_buku'] = $row['kd_buku'];
             $data['nama_buku'] = $row['nama_buku'];
             $data['penulis'] = $row['penulis'];
             $data['penerbit'] = $row['penerbit'];

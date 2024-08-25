@@ -7,16 +7,20 @@ $password = $_POST["password"];
 if (!isset($username) || !isset($password)) {
     echo "Data belum lengkap";
 } else {
-    $query = "SELECT * FROM user_register WHERE username = '$username'";
+    $query = "SELECT tb_login.*, tb_member.status_member FROM tb_login 
+    JOIN tb_member ON tb_login.id_member = tb_member.id_member 
+    WHERE username = '$username'";
+
     $result = mysqli_query($connect, $query);
 
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
         $PassHash = $row["password"];
         if (password_verify($password, $PassHash)) {
-
-            $response["message"] = "anda berhasil login " . $row["id"] . " " .$row["status"];
             $response["success"] = true;
+            $response["message"] = "anda berhasil login";
+            $response["id_member"] = $row["id_member"];
+            $response["status_member"] = $row["status_member"];
         } else {
             $response["message"] = "anda gagal login";
             $response["success"] = false;

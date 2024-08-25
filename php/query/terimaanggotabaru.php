@@ -2,16 +2,15 @@
 include('config.php');
 include('sendemail.php');
 
-$id_regis = $_GET['id_regis'];
+$id_member = $_GET['id_member'];
 $emailuser = $_GET['emailuser'];
 $nama = $_GET['nama'];
 
 $html = "";
 
-if (empty($id_regis)) {
-    
+if (empty($id_member)) {
 } else {
-    $query = "UPDATE user_register SET status = '1' WHERE id = '$id_regis'";
+    $query = "UPDATE tb_member SET status_member = '1' WHERE id_member = '$id_member'";
     $result = mysqli_query($connect, $query);
 
     if ($result) {
@@ -58,5 +57,3 @@ if (empty($id_regis)) {
         exit;
     }
 }
-
-?>

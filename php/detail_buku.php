@@ -1,16 +1,18 @@
 <?php
 include("query/config.php");
 
-$kd_buku = $_GET["kd_buku"];
+$nisn_isbn = $_GET["nisn_isbn"];
 $data;
 
-if (isset($kd_buku)) {
-    $query = "SELECT * FROM tb_buku WHERE kd_buku = $kd_buku";
+if (isset($nisn_isbn)) {
+    $query = "SELECT * FROM tb_buku WHERE nisn_isbn = '$nisn_isbn'";
     $result = mysqli_query($connect, $query);
     if ($result) {
         $data = mysqli_fetch_array($result);
     }
 }
+// header('Content-Type: application/json');
+// echo json_encode($data);
 ?>
 
 <div class="content-wrapper">
@@ -60,15 +62,19 @@ if (isset($kd_buku)) {
                             <div class="tab-content">
                                 <div class="active tab-pane" id="Detail">
                                     <div class="row">
+                                        <!-- <div class="form-group col-6">
+                                            <label for="nisn_isbn">Kode Buku</label>
+                                            <input type="text" class="form-control" id="nisn_isbn" placeholder="Penulis" value="<?= $data['nisn_isbn'] ?>" disabled>
+                                        </div> -->
                                         <div class="form-group col-6">
-                                            <label for="kd_buku">Kode Buku</label>
-                                            <input type="text" class="form-control" id="kd_buku" placeholder="Penulis" value="<?= $data['kd_buku'] ?>" disabled>
+                                            <label for="nisn_isbn">NISN/ISBN</label>
+                                            <input type="text" class="form-control" id="nisn_isbn" placeholder="NISN/ISBN" value="<?= $data['nisn_isbn'] ?>" disabled>
                                         </div>
                                         <div class="form-group col-6">
                                             <label for="nama_buku">Nama Buku</label>
                                             <input type="text" class="form-control" id="nama_buku" placeholder="Penerbit" value="<?= $data['nama_buku'] ?>" disabled>
                                         </div>
-                                    </div> `
+                                    </div>
                                     <div class="row">
                                         <div class="form-group col-6">
                                             <label for="penulis">Penulis</label>
@@ -111,18 +117,18 @@ if (isset($kd_buku)) {
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-6">
-                                            <label for="nisn_isbn">NISN/ISBN</label>
-                                            <input type="text" class="form-control" id="nisn_isbn" placeholder="NISN/ISBN" value="<?= $data['nisn_isbn'] ?>" disabled>
+                                            <label for="tahun_terbit">Tahun Terbit</label>
+                                            <input type="text" class="form-control" id="tahun_terbit" placeholder="Tahun Terbit" value="<?= $data['tahun_terbit'] ?>" disabled>
                                         </div>
                                         <div class="form-group col-6">
-                                            <label for="tahun_terbit">Tahun Terbit</label>
-                                            <input type="date" class="form-control" id="tahun_terbit" placeholder="Tahun Terbit" value="<?= $data['tahun_terbit'] ?>" disabled>
+                                            <label for="jumlah_hal">Jumlah halaman</label>
+                                            <input type="text" class="form-control" id="jumlah_hal" placeholder="Jumlah halaman" value="<?= $data['halaman_buku'] ?>" disabled>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-6">
-                                            <label for="jumlah_hal">Jumlah halaman</label>
-                                            <input type="text" class="form-control" id="jumlah_hal" placeholder="Jumlah halaman" value="<?= $data['halaman_buku'] ?>" disabled>
+                                            <label for="stok_buku">Stok Buku</label>
+                                            <input type="text" class="form-control" id="stok_buku" placeholder="Stok Buku" value="<?= $data['stok'] ?>" disabled>
                                         </div>
                                         <div class="form-group col-6">
                                             <label for="rak_buku">Rak Buku</label>
@@ -145,11 +151,7 @@ if (isset($kd_buku)) {
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-group col-6">
-                                            <label for="stok_buku">Stok Buku</label>
-                                            <input type="text" class="form-control" id="stok_buku" placeholder="Stok Buku" value="<?= $data['stok'] ?>" disabled>
-                                        </div>
-                                        <div class="col-6">
+                                        <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label>Tentang Buku</label>
                                                 <textarea class="form-control" rows="3" placeholder="Enter ..." style="height: 90px;" value="" disabled><?= $data['tentang'] ?></textarea>
@@ -161,9 +163,13 @@ if (isset($kd_buku)) {
                                 <div class="tab-pane" id="Edit">
                                     <form action="query/editbuku.php" method="POST" enctype="multipart/form-data">
                                         <div class="row">
+                                            <!-- <div class="form-group col-6">
+                                                <label for="nisn_isbn">Kode Buku</label>
+                                                <input name="nisn_isbn" type="text" class="form-control" id="nisn_isbn" placeholder="Penulis" value="<?= $data['nisn_isbn'] ?>" required>
+                                            </div> -->
                                             <div class="form-group col-6">
-                                                <label for="kd_buku">Kode Buku</label>
-                                                <input name="kd_buku" type="text" class="form-control" id="kd_buku" placeholder="Penulis" value="<?= $data['kd_buku'] ?>" required>
+                                                <label for="nisn_isbn">NISN/ISBN</label>
+                                                <input name="nisn_isbn" type="text" class="form-control" id="nisn_isbn" placeholder="NISN/ISBN" value="<?= $data['nisn_isbn'] ?>" disabled>
                                             </div>
                                             <div class="form-group col-6">
                                                 <label for="nama_buku">Nama Buku</label>
@@ -211,18 +217,18 @@ if (isset($kd_buku)) {
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-6">
-                                                <label for="nisn_isbn">NISN/ISBN</label>
-                                                <input name="nisn_isbn" type="text" class="form-control" id="nisn_isbn" placeholder="NISN/ISBN" value="<?= $data['nisn_isbn'] ?>" required>
+                                                <label for="tahun_terbit">Tahun Terbit</label>
+                                                <input name="tahun_terbit" type="text" class="form-control" id="tahun_terbit" placeholder="Tahun Terbit" value="<?= $data['tahun_terbit'] ?>" required>
                                             </div>
                                             <div class="form-group col-6">
-                                                <label for="tahun_terbit">Tahun Terbit</label>
-                                                <input name="tahun_terbit" type="date" class="form-control" id="tahun_terbit" placeholder="Tahun Terbit" value="<?= $data['tahun_terbit'] ?>" required>
+                                                <label for="jumlah_hal">Jumlah halaman</label>
+                                                <input name="jumlah_hal" type="text" class="form-control" id="jumlah_hal" placeholder="Jumlah halaman" value="<?= $data['halaman_buku'] ?>" required>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="form-group col-6">
-                                                <label for="jumlah_hal">Jumlah halaman</label>
-                                                <input name="jumlah_hal" type="text" class="form-control" id="jumlah_hal" placeholder="Jumlah halaman" value="<?= $data['halaman_buku'] ?>" required>
+                                                <label for="stok_buku">Stok Buku</label>
+                                                <input name="stok_buku" type="text" class="form-control" id="stok_buku" placeholder="Stok Buku" value="<?= $data['stok'] ?>" required>
                                             </div>
                                             <div class="form-group col-6">
                                                 <label for="rak_buku">Rak Buku</label>
@@ -242,13 +248,10 @@ if (isset($kd_buku)) {
                                                     ?>
                                                 </select>
                                             </div>
+
                                         </div>
                                         <div class="row">
-                                            <div class="form-group col-6">
-                                                <label for="stok_buku">Stok Buku</label>
-                                                <input name="stok_buku" type="text" class="form-control" id="stok_buku" placeholder="Stok Buku" value="<?= $data['stok'] ?>" required>
-                                            </div>
-                                            <div class="form-group col-6">
+                                            <div class="form-group col-sm-12">
                                                 <label for="gambar_buku">Gambar(Cover) Buku</label>
                                                 <div class="input-group">
                                                     <div class="custom-file">

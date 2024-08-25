@@ -7,7 +7,7 @@ $lokasi = $_FILES['gambar_buku']['tmp_name'];
 $tipefile = $_FILES['gambar_buku']['type'];
 $ukuranfile = $_FILES['gambar_buku']['size'];
 
-$kd_buku = $_POST["kd_buku"];
+// $kd_buku = $_POST["kd_buku"];
 $namabuku = $_POST['nama_buku'];
 $penulis = $_POST['penulis'];
 $penerbit = $_POST['penerbit'];
@@ -18,29 +18,39 @@ $rak = $_POST['rak_buku'];
 $stok = $_POST['stok_buku'];
 $tentang = $_POST['tentang_buku'];
 
-if (empty($namabuku)){
+echo $namabuku . "<br>";
+echo $penulis . "<br>";
+echo $penerbit . "<br>";
+echo $nisn . "<br>";
+echo $tahun . "<br>";
+echo $halaman . "<br>";
+echo $rak . "<br>";
+echo $stok . "<br>";
+echo $tentang . "<br>";
+
+if (empty($namabuku)) {
     echo "Mohon lengkapi kolom namabuku!";
-} elseif (empty($penulis)){
+} elseif (empty($penulis)) {
     echo "Mohon lengkapi kolom penulis!";
-} elseif (empty($penerbit)){
+} elseif (empty($penerbit)) {
     echo "Mohon lengkapi kolom penerbit!";
-} elseif (empty($nisn)){
+} elseif (empty($nisn)) {
     echo "Mohon lengkapi kolom nisn!";
-} elseif (empty($tahun)){
+} elseif (empty($tahun)) {
     echo "Mohon lengkapi kolom tahun!";
-} elseif (empty($halaman)){
+} elseif (empty($halaman)) {
     echo "Mohon lengkapi kolom halaman!";
-} elseif (empty($rak)){
+} elseif (empty($rak)) {
     echo "Mohon lengkapi kolom rak!";
-} elseif (empty($stok)){
+} elseif (empty($stok)) {
     echo "Mohon lengkapi kolom stok!";
 } elseif (empty($tentang)) {
     echo "Mohon lengkapi kolom tentang!";
 } else {
-    $query = "SELECT * FROM tb_buku WHERE kd_buku = $kd_buku";
+    $query = "SELECT * FROM tb_buku WHERE nisn_isbn = $nisn";
     $result = mysqli_query($connect, $query);
     if ($result) {
-        
+
         $data = mysqli_fetch_array($result);
         if (file_exists("../../images/images_buku/" . $data["gambar_buku"])) {
             unlink("../../images/images_buku/" . $data["gambar_buku"]);
@@ -48,15 +58,14 @@ if (empty($namabuku)){
             $query = "UPDATE tb_buku SET  
             nama_buku = '$namabuku', 
             penulis = '$penulis', 
-            penerbit = '$penerbit', 
-            `nisn_isbn` = '$nisn', 
+            penerbit = '$penerbit',
             tahun_terbit = '$tahun', 
             halaman_buku = '$halaman', 
             id_rak = '$rak',
             stok = '$stok', 
             tentang = '$tentang' ,
             gambar_buku = '$foto'
-            WHERE kd_buku = '$kd_buku' ";
+            WHERE nisn_isbn = '$nisn'";
             $result = mysqli_query($connect, $query);
 
             if ($result) {
@@ -67,21 +76,19 @@ if (empty($namabuku)){
                 // Jika gagal, tampilkan pesan error atau lakukan penanganan kesalahan lainnya
                 echo "Gagal menyimpan data ke database.";
             }
-        }
-        else {
+        } else {
             move_uploaded_file($lokasi, "../../images/images_buku/" . $foto);
             $query = "UPDATE tb_buku SET  
             nama_buku = '$namabuku', 
             penulis = '$penulis', 
-            penerbit = '$penerbit', 
-            `nisn_isbn` = '$nisn', 
+            penerbit = '$penerbit',
             tahun_terbit = '$tahun', 
             halaman_buku = '$halaman', 
             id_rak = '$rak',
             stok = '$stok', 
             tentang = '$tentang' ,
             gambar_buku = '$foto'
-            WHERE kd_buku = '$kd_buku' ";
+            WHERE nisn_isbn = '$nisn'";
             $result = mysqli_query($connect, $query);
 
             if ($result) {

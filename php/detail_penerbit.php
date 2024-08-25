@@ -35,21 +35,7 @@ if (isset($id_penerbit)) {
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-4">
-
-                    <div class="card card-primary card-outline">
-                        <div class="card-body box-profile">
-                            <div class="text-center">
-
-                                <img style="height: 400px;" class=" img-fluid" src="/perpustakaan/dist/img/boxed-bg.jpg" alt="User profile picture">
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-header p-2">
                             <ul class="nav nav-pills">

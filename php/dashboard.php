@@ -5,11 +5,11 @@ $queryDataBuku = "SELECT COUNT(*) AS databuku FROM tb_buku;";
 $resultQueryDataBuku = mysqli_query($connect, $queryDataBuku);
 $rowDataBuku = mysqli_fetch_array($resultQueryDataBuku);
 
-$queryDataPeminjaman = "SELECT COUNT(*) AS datapeminjam FROM tb_pinjam WHERE tb_pinjam.status = 'belum kembali';";
+$queryDataPeminjaman = "SELECT COUNT(*) AS datapeminjam FROM tb_pinjam WHERE tb_pinjam.status = 'belum kembali'";
 $resultDataPeminjaman = mysqli_query($connect, $queryDataPeminjaman);
 $rowDataPeminjaman = mysqli_fetch_array($resultDataPeminjaman);
 
-$queryDataMemberBaru = "SELECT COUNT(*) AS datamemberbaru FROM user_register JOIN user_member ON user_register.id = user_member.id_register WHERE user_register.status = '0';";
+$queryDataMemberBaru = "SELECT COUNT(*) AS datamemberbaru FROM tb_member JOIN tb_login ON tb_member.id_member = tb_login.id_member WHERE tb_member.status_member = '0'";
 $resultDataMemberBaru = mysqli_query($connect, $queryDataMemberBaru);
 $rowDataMemberBaru = mysqli_fetch_array($resultDataMemberBaru);
 

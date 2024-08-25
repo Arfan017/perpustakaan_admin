@@ -1,9 +1,10 @@
 <?php
 include("query/config.php");
 
-$query = "SELECT user_member.*, user_register.status FROM user_register 
-            JOIN user_member ON user_register.id = user_member.id_register
-            WHERE user_register.status = '1';";
+$query = "SELECT * FROM tb_member 
+            JOIN tb_login ON tb_login.id_member = tb_member.id_member
+            WHERE tb_member.status_member = '1';";
+
 $result = mysqli_query($connect, $query);
 $data;
 ?>
@@ -55,20 +56,20 @@ $data;
                                     while ($data = mysqli_fetch_array($result)) {
                                     ?>
                                         <tr>
-                                            <td><?= $data['no_member'] ?></td>
+                                            <td><?= $data['id_member'] ?></td>
                                             <td><?= $data['nama'] ?></td>
                                             <td><?= $data['jenkel'] ?></td>
-                                            <td><?= $data['ttgl_lahir'] ?></td>
+                                            <td><?= $data['tgl_lahir'] ?></td>
                                             <td><?= $data['alamat1'] ?></td>
                                             <td><?= $data['no_hp'] ?></td>
                                             <td class="text-center">
-                                                <a href="?hal=detail_anggota_member&id_register=<?= $data['id_register'] ?>">
+                                                <a href="?hal=detail_anggota_member&id_member=<?= $data['id_member'] ?>">
                                                     <button type="button" class="btn btn-success">Detail</button>
                                                 </a>
-                                                <a class="btn_delete" href="query/deleteanggota.php?id_register=<?= $data['id_register'] ?>">
+                                                <a class="btn_delete" href="query/deleteanggota.php?id_member=<?= $data['id_member'] ?>">
                                                     <button type="button" class="btn btn-danger">Hapus</button>
                                                 </a>
-                                                <a href="cetak.php?id_register=<?= $data['id_register'] ?>">
+                                                <a href="cetak.php?id_member=<?= $data['id_member'] ?>">
                                                     <button type="button" class="btn btn-warning">Cetak</button>
                                                 </a>
                                             </td>

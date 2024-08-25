@@ -1,7 +1,9 @@
 <?php
 include("query/config.php");
 
-$query = "SELECT tb_pinjam.*, user_member.nama, tb_buku.nama_buku FROM user_member JOIN tb_pinjam ON tb_pinjam.no_member = user_member.id_register JOIN tb_buku ON tb_pinjam.id_buku = tb_buku.kd_buku;";
+$query = "SELECT tb_pinjam.*, tb_member.nama, tb_buku.nama_buku FROM tb_member 
+            JOIN tb_pinjam ON tb_pinjam.id_member = tb_member.id_member 
+            JOIN tb_buku ON tb_pinjam.nisn_isbn = tb_buku.nisn_isbn;";
 $result = mysqli_query($connect, $query);
 $data;
 ?>
@@ -66,7 +68,7 @@ $data;
                                             <td><?= $data['status'] ?></td>
                                             <td><?= $denda ?></td>
                                             <td class="text-center">
-                                                <a href="query/pengembalianbuku.php?id_buku=<?= $data['id_buku'] ?>&id_member=<?= $data['no_member'] ?>">
+                                                <a href="query/pengembalianbuku.php?nisn_isbn=<?= $data['nisn_isbn'] ?>&id_member=<?= $data['id_member'] ?>">
                                                     <button type="button" class="btn <?= ($data['status'] == 'kembali') ? 'btn-success' : 'btn-warning disable' ?>" <?= ($data['status'] == 'kembali') ? 'disabled' : '' ?>>kembali</button>
                                                 </a>
                                             </td>

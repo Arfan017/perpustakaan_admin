@@ -7,11 +7,12 @@ function generateNoMember($i): string
     return $IdMember;
 }
 
-$id = $_POST["id"];
+$kartuidentitas = $_POST["kartuidentitas"];
 $noidentitas = $_POST["noidentitas"];
 $nama = $_POST["nama"];
 $jeniskelamin = $_POST["jeniskelamin"];
-$ttgllahir = $_POST["ttgllahir"];
+$tempatlahir = $_POST["tempatlahir"];
+$tgllahir = $_POST["tgllahir"];
 $alamat1 = $_POST["alamat1"];
 $alamat2 = $_POST["alamat2"];
 $notelp = $_POST["notelp"];
@@ -19,45 +20,40 @@ $pekerjaan = $_POST["pekerjaan"];
 $namatinstitusi = $_POST["namatinstitusi"];
 $alamatinstitusi = $_POST["alamatinstitusi"];
 $image = $_POST["gambar"];
+$username = $_POST["username"];
+$password = $_POST["password"];
+$email = $_POST["email"];
+
+$passwordhash = password_hash($password, PASSWORD_DEFAULT);
 
 $path_image = "../../images/images_profile/";
-$imageStore = rand()."-".time().".jpeg";
-$target_path = $path_image."/".$imageStore;
+$imageStore = rand() . "-" . time() . ".jpeg";
+$target_path = $path_image . "/" . $imageStore;
 file_put_contents($target_path, base64_decode($image));
 
-if (empty($id) || empty($noidentitas) || empty($nama) || empty($jeniskelamin) || empty($ttgllahir) || empty($alamat1) || empty($alamat2) || empty($notelp) || empty($namatinstitusi) || empty($alamatinstitusi) || empty($image)) {
+if (
+    empty($kartuidentitas) || empty($noidentitas) || empty($nama) || empty($jeniskelamin) || empty($tempatlahir) ||
+    empty($tgllahir) || empty($alamat1) || empty($alamat2) || empty($notelp) || empty($namatinstitusi) || empty($alamatinstitusi) ||
+    empty($image) || empty($username) || empty($password) || empty($email)
+) {
     $response["message"] = "Tidak ada data yang dikirim";
     $response["success"] = false;
+    echo json_encode($response);
+    exit;
 } else {
-    $query = "SELECT * FROM user_register WHERE id = $id";
-    $result = mysqli_query($connect, $query);
-    if (mysqli_num_rows($result) === 1) {
-        $query = "SELECT COUNT(*) AS total_member FROM user_member";
-        $result = mysqli_query($connect, $query);
-        if ($result) {
-            $row = mysqli_fetch_assoc($result);
-            $nomember = generateNoMember($row['total_member']);
-            $query = "INSERT INTO user_member 
-(id_register, no_member, no_identitas, nama, jenkel, ttgl_lahir, alamat1, alamat2, no_hp, pekerjaan, nama_institusi ,alamat_institusi, gambar) VALUES ('$id', $nomember, '$noidentitas', '$nama', '$jeniskelamin', '$ttgllahir', '$alamat1', '$alamat2', '$notelp', '$pekerjaan', '$namatinstitusi', '$alamatinstitusi', '$imageStore')";
-            $result = mysqli_query($connect, $query);
-            if ($result) {
-                // $query = "UPDATE user_register SET status = '1' WHERE id = $id";
-                // $result = mysqli_query($connect, $query);
-                // if ($result) {
-                $response["message"] = "anda berhasil daftar";
-                $response["success"] = true;
-                // } else {
-                //     $response["message"] = "anda gagal daftar";
-                //     $response["success"] = false;
-                // }
-            } else {
-                $response["message"] = "anda gagal daftar(upload ke database)";
-                $response["success"] = false;
-            }
-        } else {
-            $response["message"] = "anda gagal daftar(gagal generate NoMember)";
-            $response["success"] = false;
-        }
+    $query1 = "INSERT INTO tb_member (kartu_identitas, no_identitas, nama, jenkel, tempat_lahir, tgl_lahir, alamat1, alamat2, no_hp, pekerjaan, nama_institusi ,alamat_institusi, email, gambar, status_member) VALUES 
+                                    ('$kartuidentitas', '$noidentitas', '$nama', '$jeniskelamin', '$tempatlahir', '$tgllahir', '$alamat1', '$alamat2', '$notelp', '$pekerjaan', '$namatinstitusi', '$alamatinstitusi', '$email', '$imageStore', '2')";
+    $result1 = mysqli_query($connect, $query1);
+
+    $query2 = "INSERT INTO tb_login (id_member, username, password) VALUES (' ', '$username', '$passwordhash')";
+    $result2 = mysqli_query($connect, $query2);
+
+    if ($result1 && $result2) {
+        $response["message"] = "anda berhasil daftar";
+        $response["success"] = true;
+    } else {
+        $response["message"] = "anda gagal daftar(upload ke database)";
+        $response["success"] = false;
     }
     echo json_encode($response);
     exit;

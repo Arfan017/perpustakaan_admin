@@ -1,13 +1,17 @@
 <?php
 include('config.php');
 
-$id_penerbit = $_GET['id_penerbit'];
+$id_member = $_GET['id_member'];
 
-if (isset($id_penerbit)) {
-    $query = "DELETE FROM penerbit WHERE id_penerbit = '$id_penerbit'";
-    $result = mysqli_query($connect, $query);
-    if ($result) {
-        header("Location:/perpustakaan/php/?hal=data_penerbit");
+if (isset($id_member)) {
+    $query1 = "DELETE FROM tb_member WHERE id_member = '$id_member'";
+    $result1 = mysqli_query($connect, $query1);
+
+    $query2 = "DELETE FROM tb_login WHERE id_member = '$id_member'";
+    $result2 = mysqli_query($connect, $query2);
+
+    if ($result1 && $result2) {
+        header("Location:/perpustakaan/php/?hal=data_anggota_baru");
         exit;
     }
 } else {

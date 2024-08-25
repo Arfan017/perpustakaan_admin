@@ -78,7 +78,7 @@
                                 <div class="row">
                                     <div class="form-group col-6">
                                         <label for="tahun_terbit">Tahun Terbit</label>
-                                        <input name="tahun_terbit" type="date" class="form-control" id="tahun_terbit" placeholder="Tahun Terbit" required>
+                                        <input name="tahun_terbit" type="text" pattern="\d{4}" class="form-control" id="tahun_terbit" placeholder="Tahun Terbit" required>
                                     </div>
                                     <div class="form-group col-6">
                                         <label for="jumlah_hal">Jumlah halaman</label>

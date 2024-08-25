@@ -58,10 +58,10 @@ $data;
                                             <td><?= $data['nisn_isbn'] ?></td>
                                             <td><?= $data['stok'] ?></td>
                                             <td class="text-center">
-                                                <a href="?hal=detail_buku&kd_buku=<?= $data['kd_buku'] ?>">
+                                                <a href="?hal=detail_buku&nisn_isbn=<?= $data['nisn_isbn'] ?>">
                                                     <button type="button" class="btn btn-success">Detail</button>
                                                 </a>
-                                                <a class="btn_delete" href="query/deletebuku.php?kd_buku=<?= $data['kd_buku'] ?>&gambar_buku=<?= $data['gambar_buku'] ?>">
+                                                <a class="btn_delete" href="query/deletebuku.php?nisn_isbn=<?= $data['nisn_isbn'] ?>&gambar_buku=<?= $data['gambar_buku'] ?>">
                                                     <button type="button" class="btn btn-danger">Hapus</button>
                                                 </a>
                                             </td>

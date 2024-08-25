@@ -16,7 +16,7 @@ if (isset($id_rak)) {
     if ($result) {
         $DataBuku = array();
         while ($row = mysqli_fetch_array($result)) {
-            $data['kd_buku'] = $row['kd_buku'];
+            // $data['kd_buku'] = $row['kd_buku'];
             $data['nama_buku'] = $row['nama_buku'];
             $data['penulis'] = $row['penulis'];
             $data['penerbit'] = $row['penerbit'];

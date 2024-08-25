@@ -2,19 +2,19 @@
 include('config.php');
 
 $id_member = $_POST['id_member'];
-$id_buku = $_POST['id_buku'];
+$nisn_isbn = $_POST['nisn_isbn'];
 $tgl_ambil = $_POST['tgl_ambil'];
 $tgl_kembali = $_POST['tgl_kembali'];
 
-if (empty($id_buku) || empty($id_member) || empty($tgl_ambil) || empty($tgl_kembali)) {
+if (empty($nisn_isbn) || empty($id_member) || empty($tgl_ambil) || empty($tgl_kembali)) {
     $response['message'] = "terdapat kolo yang kosong";
 } else {
-    $query = "INSERT INTO tb_pinjam (id, no_member, tgl_pinjam, tgl_kembali, id_buku, denda, status) VALUES (0, '$id_member', '$tgl_ambil', '$tgl_kembali', '$id_buku', '-----', 'belum kembali')";
+    $query = "INSERT INTO tb_pinjam (id, id_member, tgl_pinjam, tgl_kembali, nisn_isbn, denda, status) VALUES (0, '$id_member', '$tgl_ambil', '$tgl_kembali', '$nisn_isbn', '-----', 'belum kembali')";
     $result = mysqli_query($connect, $query);
 
     if ($result) {
         // Kurangi stok buku
-        $update_query = "UPDATE tb_buku SET stok = stok - 1 WHERE kd_buku = '$id_buku'";
+        $update_query = "UPDATE tb_buku SET stok = stok - 1 WHERE nisn_isbn = '$nisn_isbn'";
         $update_result = mysqli_query($connect, $update_query);
         if ($update_result) {
             $response['success'] = true;

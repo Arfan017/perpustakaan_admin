@@ -1,11 +1,11 @@
 <?php
 include("query/config.php");
 
-$id_register = $_GET["id_register"];
+$id_member = $_GET["id_member"];
 $data;
 
-if (isset($id_register)) {
-    $query = "SELECT user_member.*, user_register.email FROM user_register JOIN user_member ON user_register.id = user_member.id_register WHERE user_member.id_register = '$id_register';";
+if (isset($id_member)) {
+    $query = "SELECT * FROM tb_member WHERE id_member = '$id_member' AND status_member = '1'";
     $result = mysqli_query($connect, $query);
     if ($result) {
         $data = mysqli_fetch_array($result);
@@ -84,7 +84,7 @@ if (isset($id_register)) {
                                                             <div class="row">
                                                                 <div class="form-group col-6">
                                                                     <label for="penulis">Tempat tanggal Lahir</label>
-                                                                    <input type="text" class="form-control" id="nama_buku" placeholder="Penerbit" value="<?= $data['ttgl_lahir'] ?>" disabled>
+                                                                    <input type="text" class="form-control" id="nama_buku" placeholder="Penerbit" value="<?= $data['tgl_lahir'] ?>" disabled>
                                                                 </div>
                                                                 <div class="form-group col-6">
                                                                     <label for="penerbit">Email</label>
@@ -127,7 +127,7 @@ if (isset($id_register)) {
 
                                                         <div class="tab-pane" id="Edit">
                                                             <form action="query/editmember.php" method="POST">
-                                                                <input name="id_user" type="hidden" class="form-control" id="id_user" placeholder="nama" value="<?= $data['id_register'] ?>">
+                                                                <input name="id_member" type="hidden" class="form-control" id="id_member" placeholder="nama" value="<?= $data['id_member'] ?>">
                                                                 <div class="row">
                                                                     <div class="form-group col-6">
                                                                         <label for="nama">Nama Lengkap</label>
@@ -140,8 +140,8 @@ if (isset($id_register)) {
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="form-group col-6">
-                                                                        <label for="ttgl_lahir">Tempat tanggal Lahir</label>
-                                                                        <input name="ttgl_lahir" type="text" class="form-control" id="ttgl_lahir" placeholder="Tempat tanggal lahir" value="<?= $data['ttgl_lahir'] ?>">
+                                                                        <label for="tgl_lahir">Tempat tanggal Lahir</label>
+                                                                        <input name="tgl_lahir" type="text" class="form-control" id="tgl_lahir" placeholder="Tempat tanggal lahir" value="<?= $data['tgl_lahir'] ?>">
                                                                     </div>
                                                                     <div class="form-group col-6">
                                                                         <label for="email">Email</label>
@@ -198,10 +198,10 @@ if (isset($id_register)) {
 
                                 <div class="tab-pane" id="peminjaman">
                                     <?php
-                                    $id_member = $data['no_member'];
+                                    $id_member = $data['id_member'];
                                     $datapinjam;
 
-                                    $querypinjam = "SELECT tb_pinjam.*, tb_buku.nama_buku FROM tb_pinjam JOIN tb_buku ON tb_pinjam.id_buku = tb_buku.kd_buku WHERE tb_pinjam.no_member = '$id_register' AND tb_pinjam.status = 'belum kembali';";
+                                    $querypinjam = "SELECT tb_pinjam.*, tb_buku.nama_buku FROM tb_pinjam JOIN tb_buku ON tb_pinjam.nisn_isbn = tb_buku.nisn_isbn WHERE tb_pinjam.id_member = '$id_member' AND tb_pinjam.status = 'belum kembali'";
                                     $resultpinjam = mysqli_query($connect, $querypinjam);
                                     // if ($resultpinjam) {
                                     //     $datapinjam = mysqli_fetch_array($resultpinjam);
@@ -251,10 +251,10 @@ if (isset($id_register)) {
                                 <!-- /.tab-pane -->
                                 <div class="tab-pane" id="riwayatpeminjaman">
                                     <?php
-                                    $id_member = $data['no_member'];
+                                    $id_member = $data['id_member'];
                                     $datariwayatpinjam;
 
-                                    $queryriwayatpinjam = "SELECT tb_pinjam.*, tb_buku.nama_buku FROM tb_pinjam JOIN tb_buku ON tb_pinjam.id_buku = tb_buku.kd_buku WHERE tb_pinjam.no_member = '$id_register' AND tb_pinjam.status = 'kembali';";
+                                    $queryriwayatpinjam = "SELECT tb_pinjam.*, tb_buku.nama_buku FROM tb_pinjam JOIN tb_buku ON tb_pinjam.nisn_isbn = tb_buku.nisn_isbn WHERE tb_pinjam.id_member = '$id_member' AND tb_pinjam.status = 'kembali'";
                                     $resultriwayatpinjam = mysqli_query($connect, $queryriwayatpinjam);
                                     // if ($resultpinjam) {
                                     //     $datapinjam = mysqli_fetch_array($resultpinjam);

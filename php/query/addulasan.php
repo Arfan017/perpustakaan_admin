@@ -1,15 +1,15 @@
 <?php
 include('config.php');
 
-$id_buku = $_POST['id_buku'];
+$nisn_isbn = $_POST['nisn_isbn'];
 $id_member = $_POST['id_member'];
 $rating = $_POST['rating'];
 $ulasan = $_POST['ulasan'];
 
-if (empty($id_buku)|| empty($id_member) || empty($rating) || empty($ulasan)) {
+if (empty($nisn_isbn) || empty($id_member) || empty($rating) || empty($ulasan)) {
     $response['message'] = "terdapat kolo yang kosong";
 } else {
-    $query = "INSERT INTO tb_rating (id_rating, id_buku, id_member, rating, ulasan) VALUES (0, '$id_buku', '$id_member', '$rating', '$ulasan')";
+    $query = "INSERT INTO tb_rating (id_rating, nisn_isbn, id_member, rating, ulasan) VALUES (0, '$nisn_isbn', '$id_member', '$rating', '$ulasan')";
     $result = mysqli_query($connect, $query);
 
     if ($result) {

@@ -30,8 +30,8 @@ if (empty($namabuku) || empty($penulis) || empty($penerbit) || empty($nisn) || e
         move_uploaded_file($lokasi, "../../images/images_buku/" . $foto);
         // Insert ke database
 
-        $query = "INSERT INTO tb_buku (kd_buku, nama_buku, penulis, penerbit, `nisn_isbn`, tahun_terbit, halaman_buku, id_rak, stok, tentang, gambar_buku) 
-    VALUES ('' ,'$namabuku' ,'$penulis', '$penerbit', '$nisn', '$tahun', '$halaman', '$rak', '$stok', '$tentang' , '$foto')";
+        $query = "INSERT INTO tb_buku (nama_buku, penulis, penerbit, `nisn_isbn`, tahun_terbit, halaman_buku, id_rak, stok, tentang, gambar_buku) 
+    VALUES ('$namabuku' ,'$penulis', '$penerbit', '$nisn', '$tahun', '$halaman', '$rak', '$stok', '$tentang' , '$foto')";
         $result = mysqli_query($connect, $query);
 
         if ($result) {
