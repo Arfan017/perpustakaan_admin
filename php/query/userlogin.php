@@ -17,10 +17,15 @@ if (!isset($username) || !isset($password)) {
         $row = mysqli_fetch_assoc($result);
         $PassHash = $row["password"];
         if (password_verify($password, $PassHash)) {
-            $response["success"] = true;
-            $response["message"] = "anda berhasil login";
-            $response["id_member"] = $row["id_member"];
-            $response["status_member"] = $row["status_member"];
+            $status_member = $row["status_member"];
+            if ($status_member == 2) {
+                $response["success"] = false;
+            } elseif ($status_member == 1) {
+                $response["success"] = true;
+                $response["message"] = "anda berhasil login";
+                $response["id_member"] = $row["id_member"];
+                $response["status_member"] = $row["status_member"];
+            }            
         } else {
             $response["message"] = "anda gagal login";
             $response["success"] = false;

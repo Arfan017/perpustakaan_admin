@@ -1,11 +1,11 @@
 <?php
 include('config.php');
 
-$id_user = $_POST['id_user'];
-$NoIdentitas = $_POST['NoIdentitas'];
+$id_member = $_POST['id_member'];
 $Nama = $_POST['Nama'];
 $Jenkel = $_POST['Jenkel'];
-$Ttl = $_POST['Ttl'];
+$TempatLahir = $_POST['TempatLahir'];
+$TanggalLahir = $_POST['TanggalLahir'];
 $Email = $_POST['Email'];
 $AlamatIdentitas = $_POST['AlamatIdentitas'];
 $AlamatSekarang = $_POST['AlamatSekarang'];
@@ -14,32 +14,42 @@ $Pekerjaan = $_POST['Pekerjaan'];
 $NamaInstitusi = $_POST['NamaInstitusi'];
 $AlamatInstitusi = $_POST['AlamatInstitusi'];
 
-if (empty($id_user) || empty($NoIdentitas) || empty($Nama) || empty($Jenkel) || empty($Ttl) || empty($Email) || empty($Email) || empty($AlamatIdentitas) || empty($AlamatSekarang) || empty($Nohp) || empty($Pekerjaan) || empty($NamaInstitusi) || empty($AlamatInstitusi)) {
-    echo "Mohon lengkapi semua kolom!";
+if (
+    empty($id_member) || empty($Nama) || empty($Jenkel) || empty($TempatLahir) || empty($TanggalLahir) ||
+    empty($Email) || empty($AlamatIdentitas) || empty($AlamatSekarang) || empty($Nohp) || empty($Pekerjaan) ||
+    empty($NamaInstitusi) || empty($AlamatInstitusi)
+) {
+
+    $response["success"] = 'false';
+    $response["message"] = 'terdapat data yang kosong';
+
+    echo json_encode($response);
+    exit;
 } else {
-    $query1 = "UPDATE user_member SET  
-    no_identitas = '$NoIdentitas',
+    $query1 = "UPDATE tb_member SET 
     nama = '$Nama',
     jenkel = '$Jenkel',
-    ttgl_lahir = '$Ttl',
+    tempat_lahir = '$TempatLahir',
+    tgl_lahir = '$TanggalLahir',
+    email = '$Email',
     alamat1 = '$AlamatIdentitas',
     alamat2 = '$AlamatSekarang',
     no_hp = '$Nohp',
     pekerjaan = '$Pekerjaan',
     nama_institusi = '$NamaInstitusi',
     alamat_institusi = '$AlamatInstitusi'
-    WHERE id_register = '$id_user' ";
+    WHERE id_member = '$id_member' ";
     $result1 = mysqli_query($connect, $query1);
 
-    $query2 = "UPDATE user_register SET  
-    email = '$Email'
-    WHERE id = '$id_user' ";
-    $result2 = mysqli_query($connect, $query2);
-    if ($result1 && $result2) {
+    if ($result1) {
         $response["success"] = 'true';
+        $response["message"] = 'Berhasil perbaharui data diri';
+
     } else {
         $response["success"] = 'false';
+        $response["message"] = 'Gagal perbaharui data diri';
     }
+
     echo json_encode($response);
     exit;
 }

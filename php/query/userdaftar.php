@@ -41,20 +41,28 @@ if (
     echo json_encode($response);
     exit;
 } else {
-    $query1 = "INSERT INTO tb_member (kartu_identitas, no_identitas, nama, jenkel, tempat_lahir, tgl_lahir, alamat1, alamat2, no_hp, pekerjaan, nama_institusi ,alamat_institusi, email, gambar, status_member) VALUES 
-                                    ('$kartuidentitas', '$noidentitas', '$nama', '$jeniskelamin', '$tempatlahir', '$tgllahir', '$alamat1', '$alamat2', '$notelp', '$pekerjaan', '$namatinstitusi', '$alamatinstitusi', '$email', '$imageStore', '2')";
-    $result1 = mysqli_query($connect, $query1);
 
-    $query2 = "INSERT INTO tb_login (id_member, username, password) VALUES (' ', '$username', '$passwordhash')";
-    $result2 = mysqli_query($connect, $query2);
-
-    if ($result1 && $result2) {
-        $response["message"] = "anda berhasil daftar";
-        $response["success"] = true;
-    } else {
-        $response["message"] = "anda gagal daftar(upload ke database)";
+    $querycekemail = "SELECT COUNT(*) FROM tb_member WHERE email = '$email'";
+    if ($querycekemail > 0) {
         $response["success"] = false;
+        $response["message"] = "email yang anda gunakan sudah pernah terdaftar";
+    } else {
+        $query1 = "INSERT INTO tb_member (kartu_identitas, no_identitas, nama, jenkel, tempat_lahir, tgl_lahir, alamat1, alamat2, no_hp, pekerjaan, nama_institusi ,alamat_institusi, email, gambar, status_member) VALUES 
+                                    ('$kartuidentitas', '$noidentitas', '$nama', '$jeniskelamin', '$tempatlahir', '$tgllahir', '$alamat1', '$alamat2', '$notelp', '$pekerjaan', '$namatinstitusi', '$alamatinstitusi', '$email', '$imageStore', '2')";
+        $result1 = mysqli_query($connect, $query1);
+
+        $query2 = "INSERT INTO tb_login (id_member, username, password) VALUES (' ', '$username', '$passwordhash')";
+        $result2 = mysqli_query($connect, $query2);
+
+        if ($result1 && $result2) {
+            $response["message"] = "anda berhasil daftar";
+            $response["success"] = true;
+        } else {
+            $response["message"] = "anda gagal daftar(upload ke database)";
+            $response["success"] = false;
+        }
     }
+
     echo json_encode($response);
     exit;
 }

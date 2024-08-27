@@ -169,7 +169,7 @@ if (isset($nisn_isbn)) {
                                             </div> -->
                                             <div class="form-group col-6">
                                                 <label for="nisn_isbn">NISN/ISBN</label>
-                                                <input name="nisn_isbn" type="text" class="form-control" id="nisn_isbn" placeholder="NISN/ISBN" value="<?= $data['nisn_isbn'] ?>" disabled>
+                                                <input name="nisn_isbn" type="text" class="form-control" id="nisn_isbn" placeholder="NISN/ISBN" value="<?= $data['nisn_isbn'] ?>" readonly>
                                             </div>
                                             <div class="form-group col-6">
                                                 <label for="nama_buku">Nama Buku</label>

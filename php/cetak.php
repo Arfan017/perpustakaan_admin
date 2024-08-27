@@ -2,17 +2,17 @@
 include("query/config.php");
 date_default_timezone_set('Asia/Jayapura');
 
-$id_registrasi = $_GET['id_register'];
+$id_member = $_GET['id_member'];
 $data;
 
-if (isset($id_registrasi)) {
-  $query = "SELECT * FROM user_member WHERE id_register = '$id_registrasi'";
+if (isset($id_member)) {
+  $query = "SELECT * FROM tb_member WHERE id_member = '$id_member'";
   $result = mysqli_query($connect, $query);
   if ($result) {
     $data = mysqli_fetch_array($result);
   }
 } else {
-  echo "Data id_registrasi Kosong";
+  echo "Data id_member Kosong";
 }
 
 function generateNoMember($i): string
