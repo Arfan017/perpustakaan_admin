@@ -1,5 +1,6 @@
 <?php
 include("query/config.php");
+if (!defined('INDEX')) die("");
 
 $query = "SELECT * FROM tb_member 
             JOIN tb_login ON tb_login.id_member = tb_member.id_member

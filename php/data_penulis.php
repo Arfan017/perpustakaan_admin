@@ -1,6 +1,8 @@
 <?php
-
 include("query/config.php");
+if (!defined('INDEX')) die("");
+
+
 $query = "SELECT * FROM tb_penulis";
 $result = mysqli_query($connect, $query);
 $data;

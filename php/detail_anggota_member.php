@@ -1,5 +1,6 @@
 <?php
 include("query/config.php");
+if (!defined('INDEX')) die("");
 
 $id_member = $_GET["id_member"];
 $data;

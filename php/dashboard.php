@@ -1,4 +1,7 @@
 <?php
+
+if (!defined('INDEX')) die("");
+
 include("query/config.php");
 
 $queryDataBuku = "SELECT COUNT(*) AS databuku FROM tb_buku;";

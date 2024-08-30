@@ -1,5 +1,6 @@
 <?php
 include("query/config.php");
+if (!defined('INDEX')) die("");
 
 $nisn_isbn = $_GET["nisn_isbn"];
 $data;

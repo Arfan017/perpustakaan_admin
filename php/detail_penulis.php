@@ -1,5 +1,6 @@
 <?php
 include("query/config.php");
+if (!defined('INDEX')) die("");
 
 $id_penulis = $_GET["id_penulis"];
 $data;

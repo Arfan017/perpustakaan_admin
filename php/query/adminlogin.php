@@ -1,6 +1,7 @@
 <?php
-include("config.php");
+session_start();
 
+include("config.php");
 $username = $_POST["username"];
 $password = $_POST["password"];
 
@@ -14,10 +15,12 @@ if (!isset($username) || !isset($password)) {
         $row = mysqli_fetch_assoc($result);
         $PassHash = $row["password"];
         if (password_verify($password, $PassHash)) {
+            $_SESSION['username'] = $row["username"];
+            $_SESSION['password'] = $row["password"];
             header("Location:/perpustakaan/php/?hal=dashboard");
             exit;
         } else {
-            
+            echo "<meta http-equiv = 'refresh' content='2; url = ../index.php'>";
         }
     }
 }

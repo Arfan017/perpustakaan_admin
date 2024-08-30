@@ -1,5 +1,8 @@
 <?php
 
+
+if (!defined('INDEX')) die("");
+
 $halaman = array(
     "dashboard", "data_buku", "tambah_buku", "detail_buku", 
     "data_penulis", "tambah_penulis", "detail_penulis",

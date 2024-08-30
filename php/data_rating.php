@@ -1,4 +1,6 @@
 <?php
+if (!defined('INDEX')) die("");
+
 include("query/config.php");
 
 $query = "SELECT tb_rating.*, tb_buku.nisn_isbn, tb_buku.nama_buku FROM tb_buku JOIN tb_rating ON tb_buku.nisn_isbn = tb_rating.nisn_isbn;";

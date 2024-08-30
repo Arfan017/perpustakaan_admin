@@ -1,5 +1,6 @@
 <?php
 include("query/config.php");
+if (!defined('INDEX')) die("");
 
 $query = "SELECT tb_pinjam.*, tb_member.nama, tb_buku.nama_buku FROM tb_member 
             JOIN tb_pinjam ON tb_pinjam.id_member = tb_member.id_member 
