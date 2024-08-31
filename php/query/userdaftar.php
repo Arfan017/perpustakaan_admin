@@ -42,8 +42,11 @@ if (
     exit;
 } else {
 
-    $querycekemail = "SELECT COUNT(*) FROM tb_member WHERE email = '$email'";
-    if ($querycekemail > 0) {
+    $querycekemail = "SELECT COUNT(*) as jumlah_email FROM tb_member WHERE email = '$email'";
+    $resultcekemail = mysqli_query($connect, $querycekemail);
+    $jumlah_email = mysqli_fetch_array($resultcekemail);
+
+    if ($$jumlah_email['jumlah_email'] > 0) {
         $response["success"] = false;
         $response["message"] = "email yang anda gunakan sudah pernah terdaftar";
     } else {
